@@ -2,184 +2,125 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
 
-    <meta
-        name="description"
-        content="Smart Location QR - Campus location information"
-    >
+    <title>Smart Location QR</title>
 
-    <title>Location | Smart Location QR</title>
-
-    <link rel="stylesheet" href="style.css?v=3">
-
+    <link rel="stylesheet" href="style.css?v=20">
 </head>
 
 <body>
 
-<header class="site-header">
+<header class="topbar">
 
-    <div class="header-inner">
+    <a href="index.html" class="back">
+        <span>‹</span>
+        Locations
+    </a>
 
-        <a
-            href="index.html"
-            class="back-link"
-        >
-            ← All Locations
-        </a>
+    <div class="brand">
+        <div class="brand-logo">QR</div>
 
-        <div class="brand">
-
-            <div class="brand-icon">
-                QR
-            </div>
-
-            <div>
-
-                <div class="brand-title">
-                    Smart Location QR
-                </div>
-
-                <div class="brand-subtitle">
-                    MMMUT • Gorakhpur
-                </div>
-
-            </div>
-
+        <div class="brand-text">
+            <strong>Smart Location QR</strong>
+            <small>MMMUT • Gorakhpur</small>
         </div>
-
     </div>
 
 </header>
 
 
-<main class="location-page">
+<main>
 
     <!-- Loading -->
 
-    <div
-        id="loading"
-        class="loading-box">
-
-        <div class="loading-spinner"></div>
-
-        <p>
-            Loading location...
-        </p>
-
+    <div id="loading" class="loading">
+        <div class="loader"></div>
+        <p>Loading location...</p>
     </div>
 
 
     <!-- Error -->
 
-    <div
-        id="error"
-        class="error-box"
-        style="display:none;">
+    <div id="error" class="error" style="display:none;">
 
-        <div class="error-icon">
-            ⚠️
-        </div>
+        <div class="error-symbol">!</div>
 
-        <h2>
-            Location unavailable
-        </h2>
+        <h2>Location not found</h2>
 
         <p id="errorMessage">
-            Unable to load this location.
+            This location could not be loaded.
         </p>
 
-        <a
-            href="index.html"
-            class="button"
-        >
-            View All Locations
+        <a href="index.html" class="error-button">
+            View Locations
         </a>
 
     </div>
 
 
-    <!-- Location -->
+    <!-- Main Location -->
 
-    <div
-        id="locationContent"
-        style="display:none;">
+    <div id="locationContent" class="location-content" style="display:none;">
 
-        <section class="location-header">
+        <!-- TITLE -->
 
-            <div class="location-badge">
-                📍 Campus Location
+        <section class="hero">
+
+            <div class="location-type">
+                CAMPUS LOCATION
             </div>
 
-            <h1 id="name">
-                Location
-            </h1>
+            <h1 id="name">L-122</h1>
 
-            <p id="description">
-            </p>
+            <p id="description"></p>
 
         </section>
 
 
-        <!-- Photo -->
+        <!-- PHOTO -->
 
-        <section class="location-photo-card">
+        <section class="photo-card">
 
             <img
                 id="locationPhoto"
-                class="location-photo"
-                alt="Location photo"
+                src=""
+                alt="Location"
             >
 
         </section>
 
 
-        <!-- Information -->
+        <!-- BASIC INFORMATION -->
 
-        <section class="info-card">
+        <section class="details">
 
-            <div class="info-item">
+            <div class="detail">
 
-                <div class="info-icon">
-                    📍
+                <div class="detail-icon">
+                    <span>●</span>
                 </div>
 
                 <div>
-
-                    <div class="info-label">
-                        Location
-                    </div>
-
-                    <div class="info-value">
-                        MMMUT, Gorakhpur
-                    </div>
-
+                    <small>LOCATION</small>
+                    <strong>MMMUT, Gorakhpur</strong>
                 </div>
 
             </div>
 
 
-            <div class="info-item">
+            <div class="detail">
 
-                <div class="info-icon">
-                    🧭
+                <div class="detail-icon">
+                    <span>+</span>
                 </div>
 
                 <div>
-
-                    <div class="info-label">
-                        Coordinates
-                    </div>
-
-                    <div
-                        id="coordinates"
-                        class="info-value">
-                    </div>
-
+                    <small>COORDINATES</small>
+                    <strong id="coordinates"></strong>
                 </div>
 
             </div>
@@ -187,28 +128,27 @@
         </section>
 
 
-        <!-- Map -->
+        <!-- MAP -->
 
-        <section class="content-section">
+        <section class="map-section">
 
-            <div class="section-title">
+            <div class="section-heading">
 
-                <span>
-                    🗺️
-                </span>
+                <div>
+                    <small>LOCATION</small>
+                    <h2>Map Preview</h2>
+                </div>
 
-                <h2>
-                    Location on Map
-                </h2>
+                <span class="map-pin">●</span>
 
             </div>
 
-            <div class="map-container">
+
+            <div class="map">
 
                 <iframe
                     id="mapFrame"
                     loading="lazy"
-                    allowfullscreen
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
 
@@ -217,78 +157,67 @@
         </section>
 
 
-        <!-- Actions -->
+        <!-- PRIMARY ACTION -->
 
-        <section class="actions">
+        <a
+            id="directions"
+            class="directions"
+            target="_blank"
+            rel="noopener"
+        >
 
-            <a
-                id="directions"
-                class="primary-button"
-                target="_blank"
-            >
+            <span class="direction-icon">↗</span>
 
-                🧭
-                <span>
-                    Get Directions
-                </span>
+            <span>
+                <strong>Get Directions</strong>
+                <small>Open location in Google Maps</small>
+            </span>
 
-            </a>
+            <span class="arrow">›</span>
 
+        </a>
+
+
+        <!-- SECONDARY ACTIONS -->
+
+        <div class="secondary-actions">
 
             <button
                 id="shareButton"
-                class="secondary-button"
                 type="button"
             >
-
                 ↗
-                <span>
-                    Share
-                </span>
-
+                <span>Share</span>
             </button>
 
 
             <button
                 id="copyButton"
-                class="secondary-button"
                 type="button"
             >
-
-                📋
-                <span>
-                    Copy Coordinates
-                </span>
-
+                ⧉
+                <span>Copy Coordinates</span>
             </button>
 
-        </section>
+        </div>
 
-
-        <!-- Share message -->
 
         <div
             id="shareMessage"
-            class="share-message"
+            class="message"
             style="display:none;">
         </div>
-
 
     </div>
 
 </main>
 
 
-<footer class="site-footer">
+<footer>
 
-    <p>
-        Smart Location QR
-    </p>
-
-    <p>
-        Madan Mohan Malaviya University of Technology
-        • Gorakhpur
-    </p>
+    Smart Location QR
+    <span>•</span>
+    MMMUT
 
 </footer>
 
@@ -297,6 +226,10 @@
 
 let currentLocation = null;
 
+
+/* ==========================================
+   LOAD LOCATION
+   ========================================== */
 
 async function loadLocation() {
 
@@ -367,7 +300,6 @@ async function loadLocation() {
             location
         );
 
-
     }
 
     catch (error) {
@@ -383,9 +315,11 @@ async function loadLocation() {
 }
 
 
-function displayLocation(
-    location
-) {
+/* ==========================================
+   DISPLAY
+   ========================================== */
+
+function displayLocation(location) {
 
     document.title =
         location.name +
@@ -402,8 +336,10 @@ function displayLocation(
         "description"
     ).textContent =
         location.description ||
-        "Campus location at MMMUT.";
+        "MMMUT campus location, Gorakhpur.";
 
+
+    /* PHOTO */
 
     const photo =
         document.getElementById(
@@ -412,9 +348,7 @@ function displayLocation(
 
 
     photo.src =
-        location.image +
-        "?v=" +
-        Date.now();
+        location.image;
 
 
     photo.alt =
@@ -422,13 +356,15 @@ function displayLocation(
 
 
     photo.onerror =
-        function() {
+        function () {
 
-            photo.style.display =
+            this.style.display =
                 "none";
 
         };
 
+
+    /* COORDINATES */
 
     const coordinates =
         location.latitude +
@@ -442,6 +378,8 @@ function displayLocation(
         coordinates;
 
 
+    /* DIRECTIONS */
+
     document.getElementById(
         "directions"
     ).href =
@@ -450,6 +388,8 @@ function displayLocation(
         "," +
         location.longitude;
 
+
+    /* MAP */
 
     document.getElementById(
         "mapFrame"
@@ -460,6 +400,8 @@ function displayLocation(
         location.longitude +
         "&z=18&output=embed";
 
+
+    /* BUTTONS */
 
     document.getElementById(
         "shareButton"
@@ -477,6 +419,8 @@ function displayLocation(
     );
 
 
+    /* SHOW */
+
     document.getElementById(
         "loading"
     ).style.display =
@@ -491,9 +435,146 @@ function displayLocation(
 }
 
 
-function showError(
-    message
-) {
+/* ==========================================
+   SHARE
+   ========================================== */
+
+async function shareLocation() {
+
+    const url =
+        window.location.href;
+
+
+    if (navigator.share) {
+
+        try {
+
+            await navigator.share({
+
+                title:
+                    currentLocation.name,
+
+                text:
+                    "Location: " +
+                    currentLocation.name,
+
+                url:
+                    url
+
+            });
+
+        }
+
+        catch (error) {
+
+            console.log(
+                "Share cancelled."
+            );
+
+        }
+
+    }
+
+    else {
+
+        try {
+
+            await navigator.clipboard.writeText(
+                url
+            );
+
+            showMessage(
+                "Location link copied"
+            );
+
+        }
+
+        catch {
+
+            showMessage(
+                "Unable to copy link"
+            );
+
+        }
+
+    }
+
+}
+
+
+/* ==========================================
+   COPY
+   ========================================== */
+
+async function copyCoordinates() {
+
+    const coordinates =
+        currentLocation.latitude +
+        ", " +
+        currentLocation.longitude;
+
+
+    try {
+
+        await navigator.clipboard.writeText(
+            coordinates
+        );
+
+        showMessage(
+            "Coordinates copied"
+        );
+
+    }
+
+    catch {
+
+        showMessage(
+            "Unable to copy coordinates"
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   MESSAGE
+   ========================================== */
+
+function showMessage(message) {
+
+    const element =
+        document.getElementById(
+            "shareMessage"
+        );
+
+
+    element.textContent =
+        message;
+
+
+    element.style.display =
+        "block";
+
+
+    setTimeout(
+        () => {
+
+            element.style.display =
+                "none";
+
+        },
+        2200
+    );
+
+}
+
+
+/* ==========================================
+   ERROR
+   ========================================== */
+
+function showError(message) {
 
     document.getElementById(
         "loading"
@@ -511,127 +592,6 @@ function showError(
         "errorMessage"
     ).textContent =
         message;
-
-}
-
-
-async function shareLocation() {
-
-    const url =
-        window.location.href;
-
-
-    const shareData = {
-
-        title:
-            currentLocation.name,
-
-        text:
-            "Location: " +
-            currentLocation.name,
-
-        url:
-            url
-
-    };
-
-
-    try {
-
-        if (
-            navigator.share
-        ) {
-
-            await navigator.share(
-                shareData
-            );
-
-        }
-
-        else {
-
-            await navigator.clipboard.writeText(
-                url
-            );
-
-            showShareMessage(
-                "Location link copied!"
-            );
-
-        }
-
-    }
-
-    catch (error) {
-
-        console.log(
-            "Share cancelled."
-        );
-
-    }
-
-}
-
-
-async function copyCoordinates() {
-
-    const coordinates =
-        currentLocation.latitude +
-        ", " +
-        currentLocation.longitude;
-
-
-    try {
-
-        await navigator.clipboard.writeText(
-            coordinates
-        );
-
-
-        showShareMessage(
-            "Coordinates copied!"
-        );
-
-    }
-
-    catch (error) {
-
-        showShareMessage(
-            "Unable to copy coordinates."
-        );
-
-    }
-
-}
-
-
-function showShareMessage(
-    message
-) {
-
-    const element =
-        document.getElementById(
-            "shareMessage"
-        );
-
-
-    element.textContent =
-        message;
-
-
-    element.style.display =
-        "block";
-
-
-    setTimeout(
-        function() {
-
-            element.style.display =
-                "none";
-
-        },
-        2500
-    );
 
 }
 
