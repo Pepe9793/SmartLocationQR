@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport"
@@ -10,35 +9,38 @@
 
     <meta
         name="description"
-        content="Smart Location QR - Find rooms, halls and facilities at MMMUT."
+        content="Smart Location QR - MMMUT Campus Location Directory"
     >
+
+    <meta name="theme-color" content="#0f172a">
 
     <title>Smart Location QR | MMMUT</title>
 
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css?v=30">
 </head>
 
 <body>
 
-<header class="site-header">
+<header class="home-topbar">
 
-    <div class="header-inner">
+    <div class="home-header-inner">
 
-        <div class="brand">
+        <div class="home-brand">
 
-            <div class="brand-icon">
+            <div class="home-brand-logo">
                 QR
             </div>
 
-            <div>
-                <div class="brand-title">
-                    Smart Location QR
-                </div>
+            <div class="home-brand-text">
 
-                <div class="brand-subtitle">
+                <strong>
+                    Smart Location QR
+                </strong>
+
+                <small>
                     MMMUT • Gorakhpur
-                </div>
+                </small>
+
             </div>
 
         </div>
@@ -48,59 +50,66 @@
 </header>
 
 
-<main>
+<main class="home-main">
 
-    <section class="hero">
+    <!-- HERO -->
 
-        <div class="hero-content">
+    <section class="home-hero">
 
-            <div class="hero-badge">
-                📍 Campus Location Directory
-            </div>
+        <div class="home-badge">
+            CAMPUS LOCATION DIRECTORY
+        </div>
 
-            <h1>
-                Find Your Location
-            </h1>
+        <h1>
+            Find Your Location
+        </h1>
 
-            <p>
-                Explore rooms, halls and facilities at
-                Madan Mohan Malaviya University of Technology.
-            </p>
+        <p>
+            Quickly find rooms, halls and facilities
+            across the MMMUT campus.
+        </p>
 
-            <div class="search-box">
 
-                <span class="search-icon">
-                    🔍
-                </span>
+        <div class="home-search">
 
-                <input
-                    type="search"
-                    id="searchInput"
-                    placeholder="Search room, hall or location..."
-                    autocomplete="off"
-                >
+            <span>
+                ⌕
+            </span>
 
-            </div>
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search a location..."
+                autocomplete="off"
+            >
 
         </div>
 
     </section>
 
 
-    <section class="locations-section">
+    <!-- LOCATION SECTION -->
 
-        <div class="section-heading">
+    <section class="home-locations">
+
+        <div class="home-section-header">
 
             <div>
 
+                <span>
+                    LOCATIONS
+                </span>
+
                 <h2>
-                    Locations
+                    Campus Locations
                 </h2>
 
-                <p id="locationCount">
-                    Loading locations...
-                </p>
+            </div>
 
+            <div
+                id="locationCount"
+                class="location-count">
+                —
             </div>
 
         </div>
@@ -108,25 +117,41 @@
 
         <div
             id="locations"
-            class="locations-grid">
+            class="home-grid">
         </div>
 
 
         <div
             id="noResults"
-            class="no-results"
-            style="display: none;">
+            class="home-no-results"
+            style="display:none;">
 
-            <div class="no-results-icon">
-                🔎
+            <div>
+                ⌕
             </div>
 
             <h3>
-                No location found
+                No locations found
             </h3>
 
             <p>
-                Try searching with another room or hall name.
+                Try a different search.
+            </p>
+
+        </div>
+
+
+        <div
+            id="homeError"
+            class="home-error"
+            style="display:none;">
+
+            <strong>
+                Unable to load locations
+            </strong>
+
+            <p>
+                Please refresh the page and try again.
             </p>
 
         </div>
@@ -136,26 +161,15 @@
 </main>
 
 
-<footer class="site-footer">
+<footer class="home-footer">
 
-    <p>
+    <strong>
         Smart Location QR
-    </p>
-    <p>
-        © Rohan Kushwaha
-    </p>
-    <p>
-        <a
-            href="kushwaharohan2003@gmail.com"
-            target="_blank"
-        >
-            kushwaharohan2003@gmail.com
-        </a>
-    </p>
-    <p>
-        Madan Mohan Malaviya University of Technology
-        • Gorakhpur
-    </p>
+    </strong>
+
+    <span>•</span>
+
+    MMMUT
 
 </footer>
 
@@ -165,14 +179,20 @@
 let allLocations = [];
 
 
+/* ==========================================
+   LOAD LOCATIONS
+   ========================================== */
+
 async function loadLocations() {
 
     try {
 
         const response =
             await fetch(
-                "locations.json?v=" + Date.now()
+                "locations.json?v=" +
+                Date.now()
             );
+
 
         if (!response.ok) {
 
@@ -182,10 +202,14 @@ async function loadLocations() {
 
         }
 
+
         allLocations =
             await response.json();
 
-        displayLocations(allLocations);
+
+        displayLocations(
+            allLocations
+        );
 
     }
 
@@ -193,57 +217,52 @@ async function loadLocations() {
 
         console.error(error);
 
-        document.getElementById("locations")
-            .innerHTML = `
-
-                <div class="error-box">
-
-                    <div class="error-icon">
-                        ⚠️
-                    </div>
-
-                    <h3>
-                        Unable to load locations
-                    </h3>
-
-                    <p>
-                        Please refresh the page and try again.
-                    </p>
-
-                </div>
-
-            `;
+        document.getElementById(
+            "homeError"
+        ).style.display =
+            "block";
 
     }
 
 }
 
 
-function displayLocations(locations) {
+/* ==========================================
+   DISPLAY
+   ========================================== */
+
+function displayLocations(
+    locations
+) {
 
     const container =
-        document.getElementById("locations");
+        document.getElementById(
+            "locations"
+        );
 
-    const noResults =
-        document.getElementById("noResults");
 
     const count =
-        document.getElementById("locationCount");
+        document.getElementById(
+            "locationCount"
+        );
+
+
+    const noResults =
+        document.getElementById(
+            "noResults"
+        );
 
 
     container.innerHTML = "";
 
 
     count.textContent =
-        locations.length +
-        (
-            locations.length === 1
-                ? " location"
-                : " locations"
-        );
+        locations.length;
 
 
-    if (locations.length === 0) {
+    if (
+        locations.length === 0
+    ) {
 
         noResults.style.display =
             "block";
@@ -261,59 +280,70 @@ function displayLocations(locations) {
         location => {
 
             const card =
-                document.createElement("article");
+                document.createElement(
+                    "article"
+                );
+
 
             card.className =
-                "location-card";
+                "home-card";
 
 
             card.innerHTML = `
 
-                <div class="card-image-container">
+                <a
+                    href="location.html?id=${location.id}"
+                    class="home-card-link"
+                >
 
-                    <img
-                        src="${location.image}"
-                        alt="${location.name}"
-                        class="card-image"
-                        loading="lazy"
-                    >
+                    <div class="home-card-image">
 
-                    <div class="location-number">
-                        #${location.id}
+                        <img
+                            src="${location.image}"
+                            alt="${location.name}"
+                            loading="lazy"
+                        >
+
                     </div>
 
-                </div>
+
+                    <div class="home-card-body">
+
+                        <div class="home-card-number">
+                            LOCATION ${location.id}
+                        </div>
+
+                        <h3>
+                            ${location.name}
+                        </h3>
+
+                        <p>
+                            ${location.description || ""}
+                        </p>
 
 
-                <div class="card-content">
+                        <div class="home-card-action">
 
-                    <h3>
-                        ${location.name}
-                    </h3>
+                            <span>
+                                View Location
+                            </span>
 
-                    <p>
-                        ${location.description || ""}
-                    </p>
+                            <span class="home-arrow">
+                                →
+                            </span>
 
-                    <a
-                        href="location.html?id=${location.id}"
-                        class="view-button"
-                    >
+                        </div>
 
-                        View Location
+                    </div>
 
-                        <span>
-                            →
-                        </span>
-
-                    </a>
-
-                </div>
+                </a>
 
             `;
 
 
-            container.appendChild(card);
+            container.appendChild(
+                card
+            );
 
         }
     );
@@ -321,8 +351,14 @@ function displayLocations(locations) {
 }
 
 
+/* ==========================================
+   SEARCH
+   ========================================== */
+
 document
-    .getElementById("searchInput")
+    .getElementById(
+        "searchInput"
+    )
     .addEventListener(
         "input",
         function () {
@@ -349,14 +385,16 @@ document
                     location => {
 
                         const name =
-                            (
+                            String(
                                 location.name || ""
                             ).toLowerCase();
 
+
                         const description =
-                            (
+                            String(
                                 location.description || ""
                             ).toLowerCase();
+
 
                         return (
                             name.includes(search) ||

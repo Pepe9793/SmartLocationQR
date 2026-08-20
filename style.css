@@ -1,19 +1,17 @@
 /* =====================================================
    SMART LOCATION QR
-   CLEAN MOBILE-FIRST DESIGN
+   CLEAN UNIFIED DESIGN
    ===================================================== */
 
 * {
     box-sizing: border-box;
 }
 
-
 html {
     margin: 0;
     padding: 0;
     background: #f4f6f8;
 }
-
 
 body {
     margin: 0;
@@ -30,20 +28,499 @@ body {
     overflow-x: hidden;
 }
 
-
 a {
     color: inherit;
 }
 
 
 /* =====================================================
-   HEADER
+   HOMEPAGE HEADER
+   ===================================================== */
+
+.home-topbar {
+    height: 58px;
+
+    background: #ffffff;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    display: flex;
+    align-items: center;
+}
+
+.home-header-inner {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding:
+        0 20px;
+}
+
+.home-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+.home-brand-logo {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #0f172a;
+    color: white;
+
+    border-radius: 9px;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.home-brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-brand-text strong {
+    font-size: 14px;
+    line-height: 1.1;
+}
+
+.home-brand-text small {
+    margin-top: 3px;
+
+    font-size: 9px;
+
+    color: #94a3b8;
+}
+
+
+/* =====================================================
+   HOMEPAGE MAIN
+   ===================================================== */
+
+.home-main {
+    width: 100%;
+}
+
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.home-hero {
+    background: #0f172a;
+
+    color: white;
+
+    text-align: center;
+
+    padding:
+        55px 20px 60px;
+}
+
+.home-badge {
+    display: inline-block;
+
+    padding:
+        6px 11px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.10);
+
+    color: #cbd5e1;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+}
+
+.home-hero h1 {
+    margin:
+        13px 0 8px;
+
+    font-size:
+        clamp(34px, 5vw, 48px);
+
+    line-height: 1;
+
+    letter-spacing: -1px;
+}
+
+.home-hero p {
+    max-width: 550px;
+
+    margin:
+        0 auto;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   SEARCH
+   ===================================================== */
+
+.home-search {
+    width: 100%;
+    max-width: 560px;
+
+    height: 50px;
+
+    margin:
+        25px auto 0;
+
+    padding:
+        0 15px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,0.18);
+}
+
+.home-search span {
+    color: #64748b;
+
+    font-size: 22px;
+}
+
+.home-search input {
+    width: 100%;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: #111827;
+
+    font-family: inherit;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   LOCATIONS
+   ===================================================== */
+
+.home-locations {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding:
+        38px 20px 55px;
+}
+
+.home-section-header {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.home-section-header > div:first-child > span {
+    color: #94a3b8;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.home-section-header h2 {
+    margin:
+        4px 0 0;
+
+    font-size: 24px;
+
+    line-height: 1.1;
+}
+
+.location-count {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e8edf3;
+
+    color: #475569;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   LOCATION GRID
+   ===================================================== */
+
+.home-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+/* =====================================================
+   CARD
+   ===================================================== */
+
+.home-card {
+    min-width: 0;
+
+    background: white;
+
+    border:
+        1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.home-card:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(15,23,42,0.09);
+}
+
+.home-card-link {
+    display: block;
+
+    height: 100%;
+
+    text-decoration: none;
+}
+
+
+/* IMAGE */
+
+.home-card-image {
+    width: 100%;
+
+    height: 190px;
+
+    background: #e2e8f0;
+
+    overflow: hidden;
+}
+
+.home-card-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.25s ease;
+}
+
+.home-card:hover
+.home-card-image img {
+    transform:
+        scale(1.03);
+}
+
+
+/* BODY */
+
+.home-card-body {
+    padding: 15px;
+}
+
+.home-card-number {
+    color: #94a3b8;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+}
+
+.home-card h3 {
+    margin:
+        5px 0 6px;
+
+    color: #111827;
+
+    font-size: 20px;
+
+    line-height: 1.1;
+}
+
+.home-card p {
+    margin: 0;
+
+    min-height: 38px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    line-height: 1.45;
+}
+
+.home-card-action {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 14px;
+
+    padding-top: 11px;
+
+    border-top:
+        1px solid #eef2f7;
+
+    color: #334155;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+.home-arrow {
+    font-size: 18px;
+
+    color: #64748b;
+}
+
+
+/* =====================================================
+   NO RESULTS
+   ===================================================== */
+
+.home-no-results {
+    padding:
+        60px 20px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 12px;
+}
+
+.home-no-results > div {
+    font-size: 35px;
+
+    color: #94a3b8;
+}
+
+.home-no-results h3 {
+    margin:
+        10px 0 5px;
+}
+
+.home-no-results p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   ERROR
+   ===================================================== */
+
+.home-error {
+    padding: 30px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 12px;
+
+    color: #64748b;
+}
+
+.home-error strong {
+    color: #111827;
+}
+
+
+/* =====================================================
+   HOMEPAGE FOOTER
+   ===================================================== */
+
+.home-footer {
+    padding:
+        20px;
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    font-size: 9px;
+}
+
+.home-footer span {
+    margin:
+        0 5px;
+}
+
+
+/* =====================================================
+   LOCATION PAGE
    ===================================================== */
 
 .topbar {
-
     width: 100%;
-
     height: 58px;
 
     background: #ffffff;
@@ -59,12 +536,9 @@ a {
 
     padding:
         0 max(16px, calc((100% - 860px) / 2));
-
 }
 
-
 .back {
-
     display: flex;
 
     align-items: center;
@@ -78,39 +552,29 @@ a {
     font-size: 14px;
 
     font-weight: 500;
-
 }
 
-
 .back span {
-
     font-size: 23px;
 
     line-height: 1;
-
 }
 
-
 .brand {
-
     display: flex;
 
     align-items: center;
 
     gap: 9px;
-
 }
 
-
 .brand-logo {
-
     width: 35px;
     height: 35px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     background: #0f172a;
@@ -122,77 +586,45 @@ a {
     font-size: 10px;
 
     font-weight: 800;
-
 }
 
-
 .brand-text {
-
     display: flex;
 
     flex-direction: column;
-
 }
-
 
 .brand-text strong {
-
     font-size: 14px;
-
-    line-height: 1.1;
-
 }
 
-
 .brand-text small {
-
     margin-top: 3px;
 
     font-size: 9px;
 
     color: #94a3b8;
-
 }
 
+.location-content {
+    padding:
+        22px 18px 35px;
+}
 
-/* =====================================================
-   MAIN
-   ===================================================== */
-
-main {
-
+.location-content {
     width: 100%;
-
     max-width: 760px;
 
     margin: auto;
-
 }
-
-
-.location-content {
-
-    padding:
-        22px 18px 35px;
-
-}
-
-
-/* =====================================================
-   HERO
-   ===================================================== */
 
 .hero {
-
     text-align: center;
 
     margin-bottom: 15px;
-
 }
 
-
 .location-type {
-
     display: inline-block;
 
     padding:
@@ -209,26 +641,18 @@ main {
     font-weight: 700;
 
     letter-spacing: 0.8px;
-
 }
 
-
 .hero h1 {
-
     margin:
         8px 0 4px;
 
     font-size: 38px;
 
     line-height: 1;
-
-    letter-spacing: -1px;
-
 }
 
-
 .hero p {
-
     margin: 0;
 
     color: #64748b;
@@ -236,19 +660,12 @@ main {
     font-size: 13px;
 
     line-height: 1.4;
-
 }
 
-
-/* =====================================================
-   PHOTO
-   ===================================================== */
-
 .photo-card {
-
     width: 100%;
 
-    background: #ffffff;
+    background: white;
 
     border-radius: 14px;
 
@@ -256,32 +673,19 @@ main {
 
     box-shadow:
         0 4px 18px
-        rgba(15, 23, 42, 0.08);
-
+        rgba(15,23,42,0.08);
 }
 
-
 .photo-card img {
-
     display: block;
 
     width: 100%;
-
     height: auto;
 
-    max-width: 100%;
-
     border-radius: 10px;
-
 }
 
-
-/* =====================================================
-   DETAILS
-   ===================================================== */
-
 .details {
-
     display: grid;
 
     grid-template-columns:
@@ -290,12 +694,9 @@ main {
     gap: 10px;
 
     margin-top: 12px;
-
 }
 
-
 .detail {
-
     min-width: 0;
 
     display: flex;
@@ -306,18 +707,15 @@ main {
 
     padding: 12px;
 
-    background: #ffffff;
+    background: white;
 
     border:
         1px solid #e5e7eb;
 
     border-radius: 10px;
-
 }
 
-
 .detail-icon {
-
     width: 34px;
     height: 34px;
 
@@ -326,7 +724,6 @@ main {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     border-radius: 8px;
@@ -334,21 +731,9 @@ main {
     background: #f1f5f9;
 
     color: #334155;
-
-    font-size: 12px;
-
 }
-
-
-.detail div:last-child {
-
-    min-width: 0;
-
-}
-
 
 .detail small {
-
     display: block;
 
     margin-bottom: 3px;
@@ -360,12 +745,9 @@ main {
     font-weight: 700;
 
     letter-spacing: 0.6px;
-
 }
 
-
 .detail strong {
-
     display: block;
 
     color: #1e293b;
@@ -373,25 +755,13 @@ main {
     font-size: 12px;
 
     line-height: 1.25;
-
-    word-break: break-word;
-
 }
-
-
-/* =====================================================
-   MAP
-   ===================================================== */
 
 .map-section {
-
     margin-top: 16px;
-
 }
 
-
 .section-heading {
-
     display: flex;
 
     align-items: center;
@@ -399,12 +769,9 @@ main {
     justify-content: space-between;
 
     margin-bottom: 8px;
-
 }
 
-
 .section-heading small {
-
     display: block;
 
     color: #94a3b8;
@@ -412,49 +779,35 @@ main {
     font-size: 8px;
 
     font-weight: 700;
-
-    letter-spacing: 0.7px;
-
 }
-
 
 .section-heading h2 {
-
-    margin: 2px 0 0;
+    margin:
+        2px 0 0;
 
     font-size: 18px;
-
-    line-height: 1.1;
-
 }
 
-
 .map-pin {
-
     width: 30px;
     height: 30px;
-
-    border-radius: 50%;
-
-    background: #e8edf3;
-
-    color: #475569;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
-    font-size: 9px;
+    background: #e8edf3;
 
+    border-radius: 50%;
+
+    color: #475569;
+
+    font-size: 9px;
 }
 
-
 .map {
-
     width: 100%;
-
     height: 230px;
 
     overflow: hidden;
@@ -462,32 +815,16 @@ main {
     border-radius: 12px;
 
     background: #e2e8f0;
-
-    border:
-        1px solid #e2e8f0;
-
 }
 
-
 .map iframe {
-
-    display: block;
-
     width: 100%;
-
     height: 100%;
 
     border: 0;
-
 }
 
-
-/* =====================================================
-   DIRECTIONS
-   ===================================================== */
-
 .directions {
-
     display: flex;
 
     align-items: center;
@@ -496,7 +833,8 @@ main {
 
     margin-top: 12px;
 
-    padding: 13px 15px;
+    padding:
+        13px 15px;
 
     background: #0f172a;
 
@@ -505,60 +843,34 @@ main {
     border-radius: 11px;
 
     text-decoration: none;
-
-    transition:
-        transform 0.15s,
-        background 0.15s;
-
 }
-
-
-.directions:active {
-
-    transform: scale(0.99);
-
-}
-
 
 .direction-icon {
-
     width: 35px;
     height: 35px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
-
-    border-radius: 8px;
 
     background:
         rgba(255,255,255,0.12);
 
-    font-size: 17px;
-
+    border-radius: 8px;
 }
-
 
 .directions span:nth-child(2) {
-
     flex: 1;
-
 }
 
-
 .directions strong {
-
     display: block;
 
     font-size: 13px;
-
 }
 
-
 .directions small {
-
     display: block;
 
     margin-top: 3px;
@@ -566,25 +878,15 @@ main {
     color: #cbd5e1;
 
     font-size: 9px;
-
 }
 
-
 .arrow {
-
     font-size: 24px;
 
     color: #cbd5e1;
-
 }
 
-
-/* =====================================================
-   SECONDARY BUTTONS
-   ===================================================== */
-
 .secondary-actions {
-
     display: grid;
 
     grid-template-columns:
@@ -593,12 +895,9 @@ main {
     gap: 8px;
 
     margin-top: 8px;
-
 }
 
-
 .secondary-actions button {
-
     height: 42px;
 
     border:
@@ -606,7 +905,7 @@ main {
 
     border-radius: 9px;
 
-    background: #ffffff;
+    background: white;
 
     color: #334155;
 
@@ -615,25 +914,9 @@ main {
     font-size: 10px;
 
     font-weight: 600;
-
-    cursor: pointer;
-
 }
-
-
-.secondary-actions button:active {
-
-    background: #f1f5f9;
-
-}
-
-
-/* =====================================================
-   MESSAGE
-   ===================================================== */
 
 .message {
-
     margin-top: 8px;
 
     padding: 8px;
@@ -647,16 +930,9 @@ main {
     border-radius: 7px;
 
     font-size: 10px;
-
 }
 
-
-/* =====================================================
-   LOADING
-   ===================================================== */
-
 .loading {
-
     min-height: 70vh;
 
     display: flex;
@@ -664,16 +940,12 @@ main {
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
     color: #64748b;
-
 }
 
-
 .loader {
-
     width: 34px;
     height: 34px;
 
@@ -687,25 +959,15 @@ main {
 
     animation:
         spin 0.8s linear infinite;
-
 }
 
-
 @keyframes spin {
-
     to {
         transform: rotate(360deg);
     }
-
 }
 
-
-/* =====================================================
-   ERROR
-   ===================================================== */
-
 .error {
-
     margin: 40px 18px;
 
     padding: 40px 20px;
@@ -715,55 +977,15 @@ main {
     background: white;
 
     border-radius: 14px;
-
 }
-
-
-.error-symbol {
-
-    width: 45px;
-    height: 45px;
-
-    margin: auto;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #f1f5f9;
-
-    border-radius: 50%;
-
-    font-weight: bold;
-
-}
-
-
-.error h2 {
-
-    margin-bottom: 8px;
-
-}
-
-
-.error p {
-
-    color: #64748b;
-
-    font-size: 13px;
-
-}
-
 
 .error-button {
-
     display: inline-block;
 
     margin-top: 10px;
 
-    padding: 11px 18px;
+    padding:
+        11px 18px;
 
     background: #0f172a;
 
@@ -774,16 +996,9 @@ main {
     text-decoration: none;
 
     font-size: 12px;
-
 }
 
-
-/* =====================================================
-   FOOTER
-   ===================================================== */
-
 footer {
-
     padding: 18px;
 
     text-align: center;
@@ -791,14 +1006,6 @@ footer {
     color: #94a3b8;
 
     font-size: 9px;
-
-}
-
-
-footer span {
-
-    margin: 0 5px;
-
 }
 
 
@@ -806,354 +1013,340 @@ footer span {
    MOBILE
    ===================================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
-    .topbar {
+    /* HOMEPAGE */
 
+    .home-topbar {
         height: 48px;
+    }
 
+    .home-header-inner {
         padding:
             0 10px;
-
     }
 
-
-    .back {
-
-        font-size: 11px;
-
-    }
-
-
-    .back span {
-
-        font-size: 20px;
-
-    }
-
-
-    .brand {
-
-        gap: 6px;
-
-    }
-
-
-    .brand-logo {
-
+    .home-brand-logo {
         width: 29px;
         height: 29px;
 
         border-radius: 7px;
 
         font-size: 8px;
-
     }
 
-
-    .brand-text strong {
-
+    .home-brand-text strong {
         font-size: 11px;
-
     }
 
-
-    .brand-text small {
-
+    .home-brand-text small {
         display: none;
+    }
 
+    .home-hero {
+        padding:
+            35px 14px 38px;
+    }
+
+    .home-badge {
+        font-size: 7px;
+    }
+
+    .home-hero h1 {
+        margin:
+            10px 0 6px;
+
+        font-size: 32px;
+    }
+
+    .home-hero p {
+        font-size: 10px;
+    }
+
+    .home-search {
+        height: 44px;
+
+        margin-top: 18px;
+
+        border-radius: 9px;
+    }
+
+    .home-search input {
+        font-size: 12px;
+    }
+
+    .home-locations {
+        padding:
+            25px 10px 35px;
+    }
+
+    .home-section-header {
+        margin-bottom: 13px;
+    }
+
+    .home-section-header h2 {
+        font-size: 20px;
+    }
+
+    .location-count {
+        width: 27px;
+        height: 27px;
+
+        font-size: 9px;
+    }
+
+    .home-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 9px;
+    }
+
+    .home-card {
+        border-radius: 9px;
+    }
+
+    .home-card-image {
+        height: 125px;
+    }
+
+    .home-card-body {
+        padding: 9px;
+    }
+
+    .home-card-number {
+        font-size: 6px;
+    }
+
+    .home-card h3 {
+        margin:
+            4px 0;
+
+        font-size: 15px;
+    }
+
+    .home-card p {
+        min-height: 30px;
+
+        font-size: 8px;
+
+        line-height: 1.3;
+    }
+
+    .home-card-action {
+        margin-top: 8px;
+
+        padding-top: 7px;
+
+        font-size: 8px;
+    }
+
+    .home-arrow {
+        font-size: 14px;
     }
 
 
-    .location-content {
+    /* LOCATION PAGE */
+
+    .topbar {
+        height: 48px;
 
         padding:
-            12px 10px 20px;
-
+            0 10px;
     }
 
+    .back {
+        font-size: 11px;
+    }
+
+    .brand-logo {
+        width: 29px;
+        height: 29px;
+
+        border-radius: 7px;
+
+        font-size: 8px;
+    }
+
+    .brand-text strong {
+        font-size: 11px;
+    }
+
+    .brand-text small {
+        display: none;
+    }
+
+    .location-content {
+        padding:
+            12px 10px 20px;
+    }
 
     .hero {
-
         margin-bottom: 9px;
-
     }
 
-
     .location-type {
-
         padding:
             4px 8px;
 
         font-size: 7px;
-
     }
 
-
     .hero h1 {
-
         margin:
             5px 0 3px;
 
         font-size: 27px;
-
     }
-
 
     .hero p {
-
         font-size: 10px;
-
     }
 
-
-    /*
-       ORIGINAL IMAGE IS NOT MODIFIED.
-       Natural aspect ratio is preserved.
-    */
-
     .photo-card {
-
         padding: 3px;
 
         border-radius: 10px;
-
     }
 
-
     .photo-card img {
-
         width: 100%;
-
         height: auto;
 
         border-radius: 7px;
-
     }
 
-
     .details {
-
         gap: 6px;
 
         margin-top: 7px;
-
     }
 
-
     .detail {
-
         gap: 6px;
 
         padding: 7px;
 
         border-radius: 7px;
-
     }
 
-
     .detail-icon {
-
         width: 26px;
         height: 26px;
 
-        border-radius: 6px;
-
         font-size: 9px;
-
     }
-
 
     .detail small {
-
         font-size: 6px;
-
-        margin-bottom: 2px;
-
     }
-
 
     .detail strong {
-
         font-size: 9px;
-
     }
-
 
     .map-section {
-
         margin-top: 9px;
-
     }
-
 
     .section-heading {
-
         margin-bottom: 5px;
-
     }
-
 
     .section-heading small {
-
         font-size: 6px;
-
     }
-
 
     .section-heading h2 {
-
         font-size: 14px;
-
     }
 
-
     .map-pin {
-
         width: 24px;
         height: 24px;
 
         font-size: 7px;
-
     }
-
 
     .map {
-
         height: 150px;
-
-        border-radius: 8px;
-
     }
-
 
     .directions {
-
         margin-top: 7px;
 
-        padding: 8px 10px;
+        padding:
+            8px 10px;
 
         border-radius: 8px;
-
-        gap: 8px;
-
     }
 
-
     .direction-icon {
-
         width: 28px;
         height: 28px;
 
         border-radius: 6px;
-
-        font-size: 13px;
-
     }
-
 
     .directions strong {
-
         font-size: 10px;
-
     }
-
 
     .directions small {
-
         font-size: 7px;
-
-        margin-top: 2px;
-
     }
-
 
     .arrow {
-
         font-size: 20px;
-
     }
 
-
     .secondary-actions {
-
         gap: 6px;
 
         margin-top: 6px;
-
     }
 
-
     .secondary-actions button {
-
         height: 34px;
 
         border-radius: 7px;
 
         font-size: 8px;
-
     }
 
-
     footer {
-
         padding: 10px;
 
         font-size: 7px;
-
     }
 
 }
 
 
 /* =====================================================
-   VERY SMALL PHONES
+   SMALL PHONES
    ===================================================== */
 
 @media (max-width: 380px) {
 
-    .location-content {
-
-        padding-left: 7px;
-        padding-right: 7px;
-
+    .home-grid {
+        gap: 7px;
     }
 
-
-    .hero h1 {
-
-        font-size: 24px;
-
+    .home-card-image {
+        height: 110px;
     }
 
-
-    .hero p {
-
-        font-size: 9px;
-
+    .home-card-body {
+        padding: 8px;
     }
 
-
-    .map {
-
-        height: 125px;
-
+    .home-card h3 {
+        font-size: 14px;
     }
 
-
-    .directions {
-
-        padding: 7px 8px;
-
-    }
-
-
-    .secondary-actions button {
-
-        height: 31px;
-
+    .home-card p {
         font-size: 7px;
-
     }
 
 }
