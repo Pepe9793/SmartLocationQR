@@ -1567,3 +1567,401 @@
     }
 
 }
+
+/* =====================================================
+   COMPACT MOBILE QR LOCATION VIEW
+   ===================================================== */
+
+@media screen and (max-width: 600px) {
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    body {
+        background: #f5f6f8;
+    }
+
+
+    /* ================= HEADER ================= */
+
+    .site-header {
+        height: 42px;
+        background: #ffffff;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .header-inner {
+        height: 42px;
+        padding: 4px 9px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 5px;
+    }
+
+    .back-link {
+        width: auto !important;
+        margin: 0 !important;
+
+        font-size: 10px !important;
+        line-height: 1;
+    }
+
+    .brand {
+        width: auto !important;
+        gap: 5px;
+    }
+
+    .brand-icon {
+        width: 25px;
+        height: 25px;
+
+        border-radius: 6px;
+
+        font-size: 8px;
+    }
+
+    .brand-title {
+        font-size: 10px;
+        line-height: 1;
+    }
+
+    .brand-subtitle {
+        display: none;
+    }
+
+
+    /* ================= MAIN ================= */
+
+    .location-page {
+        width: 100%;
+        max-width: 100%;
+
+        margin: 0;
+        padding: 7px 8px 10px;
+    }
+
+
+    /* ================= TITLE ================= */
+
+    .location-header {
+        margin: 0 0 6px;
+        padding: 0;
+
+        text-align: center;
+    }
+
+    .location-badge {
+        padding: 3px 7px;
+        margin-bottom: 2px;
+
+        font-size: 8px;
+
+        border-radius: 20px;
+    }
+
+    .location-header h1 {
+        margin: 0 0 2px;
+
+        font-size: 22px;
+        line-height: 1.05;
+    }
+
+    .location-header p {
+        margin: 0;
+
+        font-size: 9px;
+        line-height: 1.15;
+
+        color: #6b7280;
+    }
+
+
+    /* ================= PHOTO ================= */
+
+    .location-photo-card {
+        width: 100%;
+
+        padding: 2px;
+        margin: 0;
+
+        border-radius: 8px;
+
+        background: #ffffff;
+
+        box-shadow: none;
+    }
+
+    /*
+       IMPORTANT:
+
+       This does NOT resize the original image.
+       It only controls the displayed area.
+    */
+
+    .location-photo {
+        display: block !important;
+
+        width: 100% !important;
+
+        height: 150px !important;
+
+        max-width: 100% !important;
+        max-height: none !important;
+
+        object-fit: contain !important;
+
+        background: #111827;
+
+        border-radius: 6px;
+
+        margin: 0 !important;
+    }
+
+
+    /* ================= INFO ================= */
+
+    .info-card {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 5px;
+
+        margin-top: 5px;
+    }
+
+    .info-item {
+        min-width: 0;
+
+        display: flex;
+        align-items: center;
+
+        gap: 5px;
+
+        padding: 6px;
+
+        margin: 0;
+
+        border-radius: 6px;
+
+        background: #ffffff;
+
+        border: 1px solid #eeeeee;
+
+        box-shadow: none;
+    }
+
+    .info-icon {
+        width: 23px;
+        height: 23px;
+
+        flex-shrink: 0;
+
+        border-radius: 5px;
+
+        font-size: 11px;
+    }
+
+    .info-label {
+        margin: 0 0 1px;
+
+        font-size: 7px;
+        line-height: 1;
+    }
+
+    .info-value {
+        font-size: 8px;
+        line-height: 1.1;
+
+        font-weight: 600;
+
+        word-break: break-word;
+    }
+
+
+    /* ================= MAP ================= */
+
+    .content-section {
+        width: 100%;
+
+        margin-top: 6px;
+    }
+
+    .section-title {
+        margin: 0 0 3px;
+
+        gap: 4px;
+    }
+
+    .section-title span {
+        font-size: 11px;
+    }
+
+    .section-title h2 {
+        margin: 0;
+
+        font-size: 12px;
+        line-height: 1;
+    }
+
+    .map-container {
+        width: 100% !important;
+
+        height: 125px !important;
+
+        min-height: 125px !important;
+
+        border-radius: 7px;
+
+        overflow: hidden;
+
+        box-shadow: none;
+    }
+
+    .map-container iframe {
+        display: block;
+
+        width: 100% !important;
+
+        height: 125px !important;
+
+        min-height: 125px !important;
+
+        border: 0 !important;
+    }
+
+
+    /* ================= BUTTONS ================= */
+
+    .actions {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            1.4fr 1fr 1fr;
+
+        gap: 4px;
+
+        margin-top: 6px;
+    }
+
+    .primary-button,
+    .secondary-button {
+
+        width: 100%;
+
+        min-height: 32px;
+
+        height: 32px;
+
+        padding: 3px 4px;
+
+        border-radius: 6px;
+
+        font-size: 8px;
+
+        line-height: 1;
+
+        gap: 2px;
+    }
+
+
+    /* ================= SHARE MESSAGE ================= */
+
+    .share-message {
+        margin-top: 4px;
+
+        padding: 5px;
+
+        font-size: 8px;
+
+        border-radius: 5px;
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    /*
+       Hide footer on mobile.
+       It adds scrolling but provides no useful
+       information immediately after scanning QR.
+    */
+
+    .site-footer {
+        display: none;
+    }
+
+
+    /* ================= LOADING ================= */
+
+    .loading-box {
+        padding: 60px 10px;
+    }
+
+
+    /* ================= ERROR ================= */
+
+    .location-page .error-box {
+        padding: 40px 15px;
+    }
+
+}
+
+
+/* =====================================================
+   EXTRA SMALL PHONES
+   ===================================================== */
+
+@media screen and (max-width: 380px) {
+
+    .location-page {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .location-header h1 {
+        font-size: 20px;
+    }
+
+    .location-photo {
+        height: 135px !important;
+    }
+
+    .map-container,
+    .map-container iframe {
+        height: 110px !important;
+        min-height: 110px !important;
+    }
+
+    .info-item {
+        padding: 5px;
+    }
+
+    .info-value {
+        font-size: 7px;
+    }
+
+    .primary-button,
+    .secondary-button {
+        font-size: 7px;
+        min-height: 30px;
+        height: 30px;
+    }
+
+}
