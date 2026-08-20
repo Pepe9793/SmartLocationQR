@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#05070d">
+
+    <title>Page Not Found | Smart Location QR</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet" href="style.css?v=31">
+</head>
+
+<body>
+
+<header class="home-topbar">
+
+    <div class="home-header-inner">
+
+        <div class="home-brand">
+
+            <div class="home-brand-logo">
+                QR
+            </div>
+
+            <div class="home-brand-text">
+
+                <strong>
+                    Smart Location QR
+                </strong>
+
+                <small>
+                    MMMUT • Gorakhpur
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <div class="error" style="padding-top: 90px;">
+
+        <div class="error-symbol">404</div>
+
+        <h2>Page not found</h2>
+
+        <p>
+            The page you're looking for doesn't exist.
+            Redirecting you to the home page in
+            <span id="countdown">5</span> seconds...
+        </p>
+
+        <a href="index.html" class="error-button">
+            Go to Home Now
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer class="home-footer">
+
+    <div class="footer-copy">
+        © 2026 Smart Location QR.
+    </div>
+
+    <div class="footer-campus">
+        MMMUT • Gorakhpur
+    </div>
+
+</footer>
+
+
+<script>
+
+let seconds = 5;
+
+const countdownEl =
+    document.getElementById(
+        "countdown"
+    );
+
+
+const timer =
+    setInterval(
+        () => {
+
+            seconds -= 1;
+
+
+            if (countdownEl) {
+
+                countdownEl.textContent =
+                    seconds;
+
+            }
+
+
+            if (seconds <= 0) {
+
+                clearInterval(timer);
+
+                window.location.href =
+                    "index.html";
+
+            }
+
+        },
+        1000
+    );
+
+</script>
+
+</body>
+
+</html>

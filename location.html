@@ -5,11 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#05070d">
 
     <title>Smart Location QR</title>
 
-    <link rel="stylesheet" href="style.css?v=20">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.json">
+
+    <meta property="og:title" content="Smart Location QR | MMMUT">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="favicon.svg">
+
+    <link rel="stylesheet" href="style.css?v=31">
 </head>
 
 <body>
@@ -29,6 +36,11 @@
             <small>MMMUT • Gorakhpur</small>
         </div>
     </div>
+
+    <nav class="home-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+    </nav>
 
 </header>
 
@@ -70,7 +82,7 @@
 
         <section class="hero">
 
-            <div class="location-type">
+            <div class="location-type" id="locationType">
                 CAMPUS LOCATION
             </div>
 
@@ -101,7 +113,7 @@
             <div class="detail">
 
                 <div class="detail-icon">
-                    <span>●</span>
+                    <span>📍</span>
                 </div>
 
                 <div>
@@ -115,7 +127,7 @@
             <div class="detail">
 
                 <div class="detail-icon">
-                    <span>+</span>
+                    <span>🧭</span>
                 </div>
 
                 <div>
@@ -130,7 +142,7 @@
 
         <!-- MAP -->
 
-        <section class="map-section">
+        <section class="map-section" id="mapSection">
 
             <div class="section-heading">
 
@@ -155,6 +167,16 @@
             </div>
 
         </section>
+
+
+        <!-- MAP UNAVAILABLE NOTICE -->
+
+        <div
+            id="mapUnavailable"
+            class="message"
+            style="display:none; margin-bottom: 22px;">
+            Coordinates unavailable for this location — map and directions are disabled.
+        </div>
 
 
         <!-- PRIMARY ACTION -->
@@ -215,6 +237,16 @@
 
 <footer class="site-footer">
 
+    <div class="footer-brand">
+        Smart Location QR
+    </div>
+
+    <div class="footer-campus">
+        MMMUT • Gorakhpur
+    </div>
+
+    <div class="footer-line"></div>
+
     <div class="footer-copy">
         © 2026 Smart Location QR.
     </div>
@@ -229,10 +261,6 @@
     >
         kushwaharohan2003@gmail.com
     </a>
-
-    <div class="footer-campus">
-        MMMUT • Gorakhpur
-    </div>
 
 </footer>
 
@@ -354,6 +382,16 @@ function displayLocation(location) {
         "MMMUT campus location, Gorakhpur.";
 
 
+    /* CATEGORY / TYPE BADGE */
+
+    document.getElementById(
+        "locationType"
+    ).textContent =
+        location.icon
+            ? location.icon + " " + (location.category || "CAMPUS LOCATION").toUpperCase()
+            : (location.category || "CAMPUS LOCATION").toUpperCase();
+
+
     /* PHOTO */
 
     const photo =
@@ -379,41 +417,73 @@ function displayLocation(location) {
         };
 
 
-    /* COORDINATES */
+    /* COORDINATES — VALIDATE */
 
-    const coordinates =
-        location.latitude +
-        ", " +
-        location.longitude;
+    const lat =
+        Number(location.latitude);
 
+    const lng =
+        Number(location.longitude);
 
-    document.getElementById(
-        "coordinates"
-    ).textContent =
-        coordinates;
-
-
-    /* DIRECTIONS */
-
-    document.getElementById(
-        "directions"
-    ).href =
-        "https://www.google.com/maps/dir/?api=1&destination=" +
-        location.latitude +
-        "," +
-        location.longitude;
+    const hasValidCoords =
+        Number.isFinite(lat) &&
+        Number.isFinite(lng);
 
 
-    /* MAP */
+    if (hasValidCoords) {
 
-    document.getElementById(
-        "mapFrame"
-    ).src =
-        "https://maps.google.com/maps?q=" +
-        location.latitude +
-        "," +
-        location.longitude +
-        "&z=18&output=embed";
+        document.getElementById(
+            "coordinates"
+        ).textContent =
+            lat + ", " + lng;
+
+
+        /* DIRECTIONS */
+
+        document.getElementById(
+            "directions"
+        ).href =
+            "https://www.google.com/maps/dir/?api=1&destination=" +
+            lat + "," + lng;
+
+
+        /* MAP */
+
+        document.getElementById(
+            "mapFrame"
+        ).src =
+            "https://maps.google.com/maps?q=" +
+            lat + "," + lng +
+            "&z=18&output=embed";
+
+    }
+
+    else {
+
+        document.getElementById(
+            "coordinates"
+        ).textContent =
+            "Not available";
+
+
+        document.getElementById(
+            "mapSection"
+        ).style.display =
+            "none";
+
+
+        document.getElementById(
+            "directions"
+        ).style.display =
+            "none";
+
+
+        document.getElementById(
+            "mapUnavailable"
+        ).style.display =
+            "block";
+
+    }
 
 
     /* BUTTONS */
@@ -432,6 +502,15 @@ function displayLocation(location) {
         "click",
         copyCoordinates
     );
+
+
+    if (!hasValidCoords) {
+
+        document.getElementById(
+            "copyButton"
+        ).disabled = true;
+
+    }
 
 
     /* SHOW */
@@ -523,10 +602,26 @@ async function shareLocation() {
 
 async function copyCoordinates() {
 
+    const lat =
+        Number(currentLocation.latitude);
+
+    const lng =
+        Number(currentLocation.longitude);
+
+
+    if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+
+        showMessage(
+            "Coordinates unavailable"
+        );
+
+        return;
+
+    }
+
+
     const coordinates =
-        currentLocation.latitude +
-        ", " +
-        currentLocation.longitude;
+        lat + ", " + lng;
 
 
     try {

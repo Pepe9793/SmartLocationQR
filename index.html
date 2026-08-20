@@ -12,11 +12,19 @@
         content="Smart Location QR - MMMUT Campus Location Directory"
     >
 
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#05070d">
 
     <title>Smart Location QR | MMMUT</title>
 
-    <link rel="stylesheet" href="style.css?v=30">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="manifest" href="manifest.json">
+
+    <meta property="og:title" content="Smart Location QR | MMMUT">
+    <meta property="og:description" content="Find rooms, halls and facilities across the MMMUT campus, instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="favicon.svg">
+
+    <link rel="stylesheet" href="style.css?v=31">
 </head>
 
 <body>
@@ -44,6 +52,18 @@
             </div>
 
         </div>
+
+        <nav class="home-nav">
+
+            <a href="index.html" class="nav-link active">
+                Home
+            </a>
+
+            <a href="about.html" class="nav-link">
+                About
+            </a>
+
+        </nav>
 
     </div>
 
@@ -116,8 +136,31 @@
 
 
         <div
-            id="locations"
+            id="filterChips"
+            class="filter-chips">
+        </div>
+
+
+        <div
+            id="skeletonGrid"
             class="home-grid">
+
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+
+        </div>
+
+
+        <div
+            id="locations"
+            class="home-grid"
+            style="display:none;">
         </div>
 
 
@@ -188,6 +231,7 @@
 <script>
 
 let allLocations = [];
+let activeCategory = "All";
 
 
 /* ==========================================
@@ -218,9 +262,24 @@ async function loadLocations() {
             await response.json();
 
 
-        displayLocations(
+        buildFilterChips(
             allLocations
         );
+
+
+        document.getElementById(
+            "skeletonGrid"
+        ).style.display =
+            "none";
+
+
+        document.getElementById(
+            "locations"
+        ).style.display =
+            "grid";
+
+
+        applyFilters();
 
     }
 
@@ -229,11 +288,189 @@ async function loadLocations() {
         console.error(error);
 
         document.getElementById(
+            "skeletonGrid"
+        ).style.display =
+            "none";
+
+        document.getElementById(
             "homeError"
         ).style.display =
             "block";
 
     }
+
+}
+
+
+/* ==========================================
+   FILTER CHIPS
+   ========================================== */
+
+function buildFilterChips(locations) {
+
+    const categories =
+        Array.from(
+            new Set(
+                locations
+                    .map(l => l.category)
+                    .filter(Boolean)
+            )
+        );
+
+
+    const container =
+        document.getElementById(
+            "filterChips"
+        );
+
+
+    container.innerHTML = "";
+
+
+    if (categories.length === 0) {
+
+        return;
+
+    }
+
+
+    const allChip =
+        document.createElement(
+            "button"
+        );
+
+    allChip.type = "button";
+    allChip.className =
+        "chip active";
+    allChip.textContent = "All";
+
+    allChip.addEventListener(
+        "click",
+        () => selectCategory("All")
+    );
+
+    container.appendChild(
+        allChip
+    );
+
+
+    categories.forEach(
+        category => {
+
+            const chip =
+                document.createElement(
+                    "button"
+                );
+
+            chip.type = "button";
+            chip.className = "chip";
+            chip.textContent = category;
+
+            chip.addEventListener(
+                "click",
+                () => selectCategory(category)
+            );
+
+            container.appendChild(
+                chip
+            );
+
+        }
+    );
+
+}
+
+
+function selectCategory(category) {
+
+    activeCategory = category;
+
+
+    document
+        .querySelectorAll(
+            "#filterChips .chip"
+        )
+        .forEach(
+            chip => {
+
+                chip.classList.toggle(
+                    "active",
+                    chip.textContent === category
+                );
+
+            }
+        );
+
+
+    applyFilters();
+
+}
+
+
+/* ==========================================
+   FILTER + SEARCH
+   ========================================== */
+
+function applyFilters() {
+
+    const search =
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    let filtered =
+        allLocations;
+
+
+    if (activeCategory !== "All") {
+
+        filtered =
+            filtered.filter(
+                l =>
+                    l.category ===
+                    activeCategory
+            );
+
+    }
+
+
+    if (search) {
+
+        filtered =
+            filtered.filter(
+                location => {
+
+                    const name =
+                        String(
+                            location.name || ""
+                        ).toLowerCase();
+
+
+                    const description =
+                        String(
+                            location.description || ""
+                        ).toLowerCase();
+
+
+                    return (
+                        name.includes(search) ||
+                        description.includes(search)
+                    );
+
+                }
+            );
+
+    }
+
+
+    displayLocations(
+        filtered
+    );
 
 }
 
@@ -300,6 +537,10 @@ function displayLocations(
                 "home-card";
 
 
+            const icon =
+                location.icon || "📍";
+
+
             card.innerHTML = `
 
                 <a
@@ -309,10 +550,13 @@ function displayLocations(
 
                     <div class="home-card-image">
 
+                        <span class="card-icon-badge">${icon}</span>
+
                         <img
                             src="${location.image}"
                             alt="${location.name}"
                             loading="lazy"
+                            onerror="this.style.display='none'; this.parentElement.classList.add('image-fallback');"
                         >
 
                     </div>
@@ -321,7 +565,7 @@ function displayLocations(
                     <div class="home-card-body">
 
                         <div class="home-card-number">
-                            LOCATION ${location.id}
+                            LOCATION ${location.id}${location.category ? " • " + location.category.toUpperCase() : ""}
                         </div>
 
                         <h3>
@@ -372,55 +616,7 @@ document
     )
     .addEventListener(
         "input",
-        function () {
-
-            const search =
-                this.value
-                    .toLowerCase()
-                    .trim();
-
-
-            if (!search) {
-
-                displayLocations(
-                    allLocations
-                );
-
-                return;
-
-            }
-
-
-            const filtered =
-                allLocations.filter(
-                    location => {
-
-                        const name =
-                            String(
-                                location.name || ""
-                            ).toLowerCase();
-
-
-                        const description =
-                            String(
-                                location.description || ""
-                            ).toLowerCase();
-
-
-                        return (
-                            name.includes(search) ||
-                            description.includes(search)
-                        );
-
-                    }
-                );
-
-
-            displayLocations(
-                filtered
-            );
-
-        }
+        applyFilters
     );
 
 

@@ -1,0 +1,18 @@
+{
+    "name": "Smart Location QR - MMMUT",
+    "short_name": "Smart Location QR",
+    "description": "Campus location directory for MMMUT, Gorakhpur.",
+    "start_url": "index.html",
+    "scope": ".",
+    "display": "standalone",
+    "background_color": "#05070d",
+    "theme_color": "#05070d",
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}

@@ -1,13 +1,28 @@
-import qrcode
+import json
 import os
+
+import qrcode
 
 BASE_URL = "https://pepe9793.github.io/SmartLocationQR/location.html?id="
 
+LOCATIONS_FILE = "locations.json"
 OUTPUT_FOLDER = "QR_Codes"
 
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
-for location_id in range(1, 17):
+with open(LOCATIONS_FILE, "r", encoding="utf-8") as f:
+    locations = json.load(f)
+
+# Sort by id so filenames/output stay in a predictable order,
+# and generate for whatever IDs currently exist in locations.json
+# instead of a hardcoded range — add or remove a location there
+# and this script picks it up automatically.
+locations = sorted(locations, key=lambda loc: loc["id"])
+
+for location in locations:
+
+    location_id = location["id"]
+    name = location.get("name", f"Location {location_id}")
 
     url = BASE_URL + str(location_id)
 
@@ -33,9 +48,10 @@ for location_id in range(1, 17):
     image.save(filepath)
 
     print(f"Created: {filename}")
-    print(f"URL: {url}")
+    print(f"Name:    {name}")
+    print(f"URL:     {url}")
     print()
 
 print("================================")
-print("All 16 QR codes generated!")
+print(f"All {len(locations)} QR codes generated!")
 print("================================")
