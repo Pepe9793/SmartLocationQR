@@ -4,7 +4,7 @@
         "name": "L-122",
         "description": "L-122, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.729813,
         "longitude": 83.434478,
         "image": "images/location1.jpeg"
@@ -14,7 +14,7 @@
         "name": "L-120",
         "description": "L-120, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.729803,
         "longitude": 83.434451,
         "image": "images/location2.jpeg"
@@ -24,7 +24,7 @@
         "name": "L-222",
         "description": "L-222, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.729934,
         "longitude": 83.434353,
         "image": "images/location3.jpeg"
@@ -34,7 +34,7 @@
         "name": "L-221",
         "description": "L-221, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.729947,
         "longitude": 83.434342,
         "image": "images/location4.jpeg"
@@ -44,7 +44,7 @@
         "name": "L-220",
         "description": "L-220, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.729927,
         "longitude": 83.434391,
         "image": "images/location5.jpeg"
@@ -54,7 +54,7 @@
         "name": "L-219",
         "description": "L-219, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.729613,
         "longitude": 83.434605,
         "image": "images/location6.jpeg"
@@ -64,7 +64,7 @@
         "name": "L-218",
         "description": "L-218, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.729542,
         "longitude": 83.434642,
         "image": "images/location7.jpeg"
@@ -74,7 +74,7 @@
         "name": "L-217",
         "description": "L-217, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.729571,
         "longitude": 83.434647,
         "image": "images/location8.jpeg"
@@ -83,8 +83,8 @@
         "id": 9,
         "name": "Shanti Swaroop Bhatnagar Hall",
         "description": "Shanti Swaroop Bhatnagar Hall, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
-        "category": "Hostel",
-        "icon": "🏠",
+        "category": "Lecture Room",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.731176,
         "longitude": 83.433606,
         "image": "images/location9.jpeg"
@@ -93,8 +93,8 @@
         "id": 10,
         "name": "Narendra Karmarkar Hall",
         "description": "Narendra Karmarkar Hall, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
-        "category": "Hostel",
-        "icon": "🏠",
+        "category": "Lecture Room",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.731345,
         "longitude": 83.433496,
         "image": "images/location10.jpeg"
@@ -103,8 +103,8 @@
         "id": 11,
         "name": "Aryabhatta Hall",
         "description": "Aryabhatta Hall, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
-        "category": "Hostel",
-        "icon": "🏠",
+        "category": "Lecture Room",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.730919,
         "longitude": 83.433672,
         "image": "images/location11.jpeg"
@@ -114,7 +114,7 @@
         "name": "L-117",
         "description": "L-117, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.731429,
         "longitude": 83.433739,
         "image": "images/location12.jpeg"
@@ -124,7 +124,7 @@
         "name": "L-116",
         "description": "L-116, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.729573,
         "longitude": 83.434594,
         "image": "images/location13.jpeg"
@@ -134,7 +134,7 @@
         "name": "L-118",
         "description": "L-118, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.729617,
         "longitude": 83.434576,
         "image": "images/location14.jpeg"
@@ -144,7 +144,7 @@
         "name": "L-119",
         "description": "L-119, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.729662,
         "longitude": 83.43454,
         "image": "images/location15.jpeg"
@@ -154,7 +154,7 @@
         "name": "L-121",
         "description": "L-121, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Lecture Room",
-        "icon": "📖",
+        "icon": "\ud83d\udcd6",
         "latitude": 26.729795,
         "longitude": 83.434484,
         "image": "images/location16.jpeg"
