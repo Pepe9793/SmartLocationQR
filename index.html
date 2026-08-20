@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Location QR</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Smart Location QR</h1>
+
+    <p>
+        Scan a QR code to view the location,
+        photo and map.
+    </p>
+
+    <div id="locations"
+         class="locations">
+    </div>
+
+</div>
+
+
+<script>
+
+async function loadLocations() {
+
+    const response =
+        await fetch("locations.json");
+
+    const locations =
+        await response.json();
+
+    const container =
+        document.getElementById("locations");
+
+
+    locations.forEach(location => {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "card";
+
+
+        card.innerHTML = `
+
+            <img
+                src="${location.image}"
+                alt="${location.name}"
+            >
+
+            <h2>
+                ${location.name}
+            </h2>
+
+            <p>
+                ${location.description}
+            </p>
+
+            <a
+                class="button"
+                href="location.html?id=${location.id}"
+            >
+                View Location
+            </a>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+loadLocations();
+
+</script>
+
+</body>
+
+</html>

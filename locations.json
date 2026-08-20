@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "name": "Main Gate",
+        "description": "Main entrance of the campus.",
+        "latitude": 26.7606,
+        "longitude": 83.3732,
+        "image": "images/location1.png"
+    },
+    {
+        "id": 2,
+        "name": "Library",
+        "description": "Central library.",
+        "latitude": 26.7610,
+        "longitude": 83.3740,
+        "image": "images/location2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Computer Lab",
+        "description": "Computer science laboratory.",
+        "latitude": 26.7615,
+        "longitude": 83.3745,
+        "image": "images/location3.jpg"
+    },
+    {
+        "id": 4,
+        "name": "CSE Department",
+        "description": "Computer Science and Engineering department.",
+        "latitude": 26.7620,
+        "longitude": 83.3750,
+        "image": "images/location4.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Auditorium",
+        "description": "Main campus auditorium.",
+        "latitude": 26.7625,
+        "longitude": 83.3755,
+        "image": "images/location5.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Hostel",
+        "description": "Student hostel.",
+        "latitude": 26.7630,
+        "longitude": 83.3760,
+        "image": "images/location6.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Cafeteria",
+        "description": "Campus cafeteria.",
+        "latitude": 26.7635,
+        "longitude": 83.3765,
+        "image": "images/location7.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Sports Ground",
+        "description": "Main sports ground.",
+        "latitude": 26.7640,
+        "longitude": 83.3770,
+        "image": "images/location8.jpg"
+    }
+]
