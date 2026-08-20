@@ -129,7 +129,8 @@ h1 {
 }
 
 
-.location-image {
+.location-image,
+.location-container img {
     display: block !important;
     width: 100% !important;
     height: auto !important;
