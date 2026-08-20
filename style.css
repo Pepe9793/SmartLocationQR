@@ -129,13 +129,12 @@ h1 {
 }
 
 
-.location-image,
-.location-container img {
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-    max-height: none !important;
-    object-fit: contain !important;
+.location-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
     border-radius: 12px;
 }
 
