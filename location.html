@@ -10,12 +10,8 @@
 
     <title>Location</title>
 
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    >
-
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
 
 </head>
 
@@ -26,14 +22,23 @@
     <h1 id="name">Loading...</h1>
 
     <img
-        id="image"
+        id="locationPhoto"
         class="location-image"
         alt="Location photo"
     >
 
     <p id="description"></p>
 
-    <div id="map"></div>
+    <div class="map-container">
+
+        <iframe
+            id="mapFrame"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+
+    </div>
 
     <div class="coordinates">
 
@@ -52,38 +57,29 @@
     <a
         id="directions"
         class="button"
-        target="_blank"
-    >
+        target="_blank">
         🧭 Get Directions
     </a>
 
 </div>
 
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
 <script>
 
 async function loadLocation() {
 
+    const params =
+        new URLSearchParams(window.location.search);
+
+    const id =
+        params.get("id");
+
     try {
 
-        const params =
-            new URLSearchParams(window.location.search);
-
-        const id =
-            params.get("id");
-
-        if (!id) {
-            throw new Error("No location ID");
-        }
-
         const response =
-            await fetch("./locations.json");
-
-        if (!response.ok) {
-            throw new Error("Could not load locations.json");
-        }
+            await fetch(
+                "locations.json?v=" + Date.now()
+            );
 
         const locations =
             await response.json();
@@ -94,24 +90,30 @@ async function loadLocation() {
             );
 
         if (!location) {
-            throw new Error("Location not found");
+
+            document.getElementById("name")
+                .textContent =
+                "Location not found";
+
+            return;
         }
 
 
-        // -------------------------
-        // LOCATION INFORMATION
-        // -------------------------
-
-        document.title =
-            location.name;
+        // NAME
 
         document.getElementById("name")
             .textContent =
             location.name;
 
+
+        // DESCRIPTION
+
         document.getElementById("description")
             .textContent =
-            location.description || "";
+            location.description;
+
+
+        // COORDINATES
 
         document.getElementById("latitude")
             .textContent =
@@ -122,34 +124,29 @@ async function loadLocation() {
             location.longitude;
 
 
-        // -------------------------
         // IMAGE
-        // -------------------------
 
-        const image =
-            document.getElementById("image");
+        const photo =
+            document.getElementById("locationPhoto");
 
-        image.src =
-            "./" + location.image;
-
-        image.style.display = "block";
-
-        image.onerror = function () {
-
-            console.error(
-                "Image failed:",
-                image.src
-            );
-
-            image.alt =
-                "Location image could not be loaded";
-
-        };
+        photo.src =
+            location.image + "?v=" + Date.now();
 
 
-        // -------------------------
-        // GOOGLE DIRECTIONS
-        // -------------------------
+        // GOOGLE MAP EMBED
+
+        const map =
+            document.getElementById("mapFrame");
+
+        map.src =
+            "https://maps.google.com/maps?q="
+            + location.latitude
+            + ","
+            + location.longitude
+            + "&z=18&output=embed";
+
+
+        // DIRECTIONS
 
         document.getElementById("directions").href =
             "https://www.google.com/maps/dir/?api=1&destination="
@@ -157,62 +154,19 @@ async function loadLocation() {
             + ","
             + location.longitude;
 
+    }
 
-        // -------------------------
-        // LEAFLET MAP
-        // -------------------------
-
-        const map =
-            L.map("map").setView(
-                [
-                    Number(location.latitude),
-                    Number(location.longitude)
-                ],
-                18
-            );
-
-
-        L.tileLayer(
-            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            {
-                maxZoom: 19,
-                attribution:
-                    "&copy; OpenStreetMap contributors"
-            }
-        ).addTo(map);
-
-
-        L.marker([
-            Number(location.latitude),
-            Number(location.longitude)
-        ])
-        .addTo(map)
-        .bindPopup(location.name)
-        .openPopup();
-
-
-        // Fix Leaflet rendering
-        setTimeout(function () {
-            map.invalidateSize();
-        }, 300);
-
-
-    } catch (error) {
+    catch(error) {
 
         console.error(error);
 
         document.getElementById("name")
             .textContent =
-            "Unable to load location";
-
-        document.getElementById("description")
-            .textContent =
-            error.message;
+            "Unable to load location.";
 
     }
 
 }
-
 
 loadLocation();
 
