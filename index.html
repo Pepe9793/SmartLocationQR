@@ -8,7 +8,12 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Smart Location QR</title>
+    <meta
+        name="description"
+        content="Smart Location QR - Find rooms, halls and facilities at MMMUT."
+    >
+
+    <title>Smart Location QR | MMMUT</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -16,75 +21,348 @@
 
 <body>
 
-<div class="container">
+<header class="site-header">
 
-    <h1>Smart Location QR</h1>
+    <div class="header-inner">
 
-    <p>
-        Scan a QR code to view the location,
-        photo and map.
-    </p>
+        <div class="brand">
 
-    <div id="locations"
-         class="locations">
+            <div class="brand-icon">
+                QR
+            </div>
+
+            <div>
+                <div class="brand-title">
+                    Smart Location QR
+                </div>
+
+                <div class="brand-subtitle">
+                    MMMUT • Gorakhpur
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-</div>
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                📍 Campus Location Directory
+            </div>
+
+            <h1>
+                Find Your Location
+            </h1>
+
+            <p>
+                Explore rooms, halls and facilities at
+                Madan Mohan Malaviya University of Technology.
+            </p>
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search room, hall or location..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="locations-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2>
+                    Locations
+                </h2>
+
+                <p id="locationCount">
+                    Loading locations...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="locations"
+            class="locations-grid">
+        </div>
+
+
+        <div
+            id="noResults"
+            class="no-results"
+            style="display: none;">
+
+            <div class="no-results-icon">
+                🔎
+            </div>
+
+            <h3>
+                No location found
+            </h3>
+
+            <p>
+                Try searching with another room or hall name.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <p>
+        Smart Location QR
+    </p>
+
+    <p>
+        Madan Mohan Malaviya University of Technology
+        • Gorakhpur
+    </p>
+
+</footer>
 
 
 <script>
 
+let allLocations = [];
+
+
 async function loadLocations() {
 
-    const response =
-        await fetch("locations.json");
+    try {
 
-    const locations =
-        await response.json();
+        const response =
+            await fetch(
+                "locations.json?v=" + Date.now()
+            );
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Unable to load locations"
+            );
+
+        }
+
+        allLocations =
+            await response.json();
+
+        displayLocations(allLocations);
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        document.getElementById("locations")
+            .innerHTML = `
+
+                <div class="error-box">
+
+                    <div class="error-icon">
+                        ⚠️
+                    </div>
+
+                    <h3>
+                        Unable to load locations
+                    </h3>
+
+                    <p>
+                        Please refresh the page and try again.
+                    </p>
+
+                </div>
+
+            `;
+
+    }
+
+}
+
+
+function displayLocations(locations) {
 
     const container =
         document.getElementById("locations");
 
+    const noResults =
+        document.getElementById("noResults");
 
-    locations.forEach(location => {
-
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "card";
+    const count =
+        document.getElementById("locationCount");
 
 
-        card.innerHTML = `
-
-            <img
-                src="${location.image}"
-                alt="${location.name}"
-            >
-
-            <h2>
-                ${location.name}
-            </h2>
-
-            <p>
-                ${location.description}
-            </p>
-
-            <a
-                class="button"
-                href="location.html?id=${location.id}"
-            >
-                View Location
-            </a>
-
-        `;
+    container.innerHTML = "";
 
 
-        container.appendChild(card);
+    count.textContent =
+        locations.length +
+        (
+            locations.length === 1
+                ? " location"
+                : " locations"
+        );
 
-    });
+
+    if (locations.length === 0) {
+
+        noResults.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    noResults.style.display =
+        "none";
+
+
+    locations.forEach(
+        location => {
+
+            const card =
+                document.createElement("article");
+
+            card.className =
+                "location-card";
+
+
+            card.innerHTML = `
+
+                <div class="card-image-container">
+
+                    <img
+                        src="${location.image}"
+                        alt="${location.name}"
+                        class="card-image"
+                        loading="lazy"
+                    >
+
+                    <div class="location-number">
+                        #${location.id}
+                    </div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>
+                        ${location.name}
+                    </h3>
+
+                    <p>
+                        ${location.description || ""}
+                    </p>
+
+                    <a
+                        href="location.html?id=${location.id}"
+                        class="view-button"
+                    >
+
+                        View Location
+
+                        <span>
+                            →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(card);
+
+        }
+    );
 
 }
+
+
+document
+    .getElementById("searchInput")
+    .addEventListener(
+        "input",
+        function () {
+
+            const search =
+                this.value
+                    .toLowerCase()
+                    .trim();
+
+
+            if (!search) {
+
+                displayLocations(
+                    allLocations
+                );
+
+                return;
+
+            }
+
+
+            const filtered =
+                allLocations.filter(
+                    location => {
+
+                        const name =
+                            (
+                                location.name || ""
+                            ).toLowerCase();
+
+                        const description =
+                            (
+                                location.description || ""
+                            ).toLowerCase();
+
+                        return (
+                            name.includes(search) ||
+                            description.includes(search)
+                        );
+
+                    }
+                );
+
+
+            displayLocations(
+                filtered
+            );
+
+        }
+    );
 
 
 loadLocations();
