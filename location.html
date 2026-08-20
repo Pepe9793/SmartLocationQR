@@ -8,165 +8,633 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Location</title>
+    <meta
+        name="description"
+        content="Smart Location QR - Campus location information"
+    >
 
-    <link rel="stylesheet"
-          href="style.css">
+    <title>Location | Smart Location QR</title>
+
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div class="location-container">
+<header class="site-header">
 
-    <h1 id="name">Loading...</h1>
+    <div class="header-inner">
 
-    <img
-        id="locationPhoto"
-        class="location-image"
-        alt="Location photo"
-    >
+        <a
+            href="index.html"
+            class="back-link"
+        >
+            ← All Locations
+        </a>
 
-    <p id="description"></p>
+        <div class="brand">
 
-    <div class="map-container">
+            <div class="brand-icon">
+                QR
+            </div>
 
-        <iframe
-            id="mapFrame"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+            <div>
 
-    </div>
+                <div class="brand-title">
+                    Smart Location QR
+                </div>
 
-    <div class="coordinates">
+                <div class="brand-subtitle">
+                    MMMUT • Gorakhpur
+                </div>
 
-        <p>
-            <strong>Latitude:</strong>
-            <span id="latitude"></span>
-        </p>
+            </div>
 
-        <p>
-            <strong>Longitude:</strong>
-            <span id="longitude"></span>
-        </p>
+        </div>
 
     </div>
 
-    <a
-        id="directions"
-        class="button"
-        target="_blank">
-        🧭 Get Directions
-    </a>
+</header>
 
-</div>
+
+<main class="location-page">
+
+    <!-- Loading -->
+
+    <div
+        id="loading"
+        class="loading-box">
+
+        <div class="loading-spinner"></div>
+
+        <p>
+            Loading location...
+        </p>
+
+    </div>
+
+
+    <!-- Error -->
+
+    <div
+        id="error"
+        class="error-box"
+        style="display:none;">
+
+        <div class="error-icon">
+            ⚠️
+        </div>
+
+        <h2>
+            Location unavailable
+        </h2>
+
+        <p id="errorMessage">
+            Unable to load this location.
+        </p>
+
+        <a
+            href="index.html"
+            class="button"
+        >
+            View All Locations
+        </a>
+
+    </div>
+
+
+    <!-- Location -->
+
+    <div
+        id="locationContent"
+        style="display:none;">
+
+        <section class="location-header">
+
+            <div class="location-badge">
+                📍 Campus Location
+            </div>
+
+            <h1 id="name">
+                Location
+            </h1>
+
+            <p id="description">
+            </p>
+
+        </section>
+
+
+        <!-- Photo -->
+
+        <section class="location-photo-card">
+
+            <img
+                id="locationPhoto"
+                class="location-photo"
+                alt="Location photo"
+            >
+
+        </section>
+
+
+        <!-- Information -->
+
+        <section class="info-card">
+
+            <div class="info-item">
+
+                <div class="info-icon">
+                    📍
+                </div>
+
+                <div>
+
+                    <div class="info-label">
+                        Location
+                    </div>
+
+                    <div class="info-value">
+                        MMMUT, Gorakhpur
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-icon">
+                    🧭
+                </div>
+
+                <div>
+
+                    <div class="info-label">
+                        Coordinates
+                    </div>
+
+                    <div
+                        id="coordinates"
+                        class="info-value">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Map -->
+
+        <section class="content-section">
+
+            <div class="section-title">
+
+                <span>
+                    🗺️
+                </span>
+
+                <h2>
+                    Location on Map
+                </h2>
+
+            </div>
+
+            <div class="map-container">
+
+                <iframe
+                    id="mapFrame"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+
+            </div>
+
+        </section>
+
+
+        <!-- Actions -->
+
+        <section class="actions">
+
+            <a
+                id="directions"
+                class="primary-button"
+                target="_blank"
+            >
+
+                🧭
+                <span>
+                    Get Directions
+                </span>
+
+            </a>
+
+
+            <button
+                id="shareButton"
+                class="secondary-button"
+                type="button"
+            >
+
+                ↗
+                <span>
+                    Share
+                </span>
+
+            </button>
+
+
+            <button
+                id="copyButton"
+                class="secondary-button"
+                type="button"
+            >
+
+                📋
+                <span>
+                    Copy Coordinates
+                </span>
+
+            </button>
+
+        </section>
+
+
+        <!-- Share message -->
+
+        <div
+            id="shareMessage"
+            class="share-message"
+            style="display:none;">
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <p>
+        Smart Location QR
+    </p>
+
+    <p>
+        Madan Mohan Malaviya University of Technology
+        • Gorakhpur
+    </p>
+
+</footer>
 
 
 <script>
 
+let currentLocation = null;
+
+
 async function loadLocation() {
 
     const params =
-        new URLSearchParams(window.location.search);
+        new URLSearchParams(
+            window.location.search
+        );
 
     const id =
         params.get("id");
+
+
+    if (!id) {
+
+        showError(
+            "No location ID was provided."
+        );
+
+        return;
+
+    }
+
 
     try {
 
         const response =
             await fetch(
-                "locations.json?v=" + Date.now()
+                "locations.json?v=" +
+                Date.now()
             );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Unable to load location data."
+            );
+
+        }
+
 
         const locations =
             await response.json();
 
+
         const location =
             locations.find(
-                item => String(item.id) === String(id)
+                item =>
+                    String(item.id) ===
+                    String(id)
             );
+
 
         if (!location) {
 
-            document.getElementById("name")
-                .textContent =
-                "Location not found";
+            throw new Error(
+                "This location does not exist."
+            );
 
-            return;
         }
 
 
-        // NAME
-
-        document.getElementById("name")
-            .textContent =
-            location.name;
+        currentLocation =
+            location;
 
 
-        // DESCRIPTION
+        displayLocation(
+            location
+        );
 
-        document.getElementById("description")
-            .textContent =
-            location.description;
-
-
-        // COORDINATES
-
-        document.getElementById("latitude")
-            .textContent =
-            location.latitude;
-
-        document.getElementById("longitude")
-            .textContent =
-            location.longitude;
-
-
-        // IMAGE
-
-        const photo =
-            document.getElementById("locationPhoto");
-
-        photo.src =
-            location.image + "?v=" + Date.now();
-
-
-        // GOOGLE MAP EMBED
-
-        const map =
-            document.getElementById("mapFrame");
-
-        map.src =
-            "https://maps.google.com/maps?q="
-            + location.latitude
-            + ","
-            + location.longitude
-            + "&z=18&output=embed";
-
-
-        // DIRECTIONS
-
-        document.getElementById("directions").href =
-            "https://www.google.com/maps/dir/?api=1&destination="
-            + location.latitude
-            + ","
-            + location.longitude;
 
     }
 
-    catch(error) {
+    catch (error) {
 
         console.error(error);
 
-        document.getElementById("name")
-            .textContent =
-            "Unable to load location.";
+        showError(
+            error.message
+        );
 
     }
 
 }
+
+
+function displayLocation(
+    location
+) {
+
+    document.title =
+        location.name +
+        " | Smart Location QR";
+
+
+    document.getElementById(
+        "name"
+    ).textContent =
+        location.name;
+
+
+    document.getElementById(
+        "description"
+    ).textContent =
+        location.description ||
+        "Campus location at MMMUT.";
+
+
+    const photo =
+        document.getElementById(
+            "locationPhoto"
+        );
+
+
+    photo.src =
+        location.image +
+        "?v=" +
+        Date.now();
+
+
+    photo.alt =
+        location.name;
+
+
+    photo.onerror =
+        function() {
+
+            photo.style.display =
+                "none";
+
+        };
+
+
+    const coordinates =
+        location.latitude +
+        ", " +
+        location.longitude;
+
+
+    document.getElementById(
+        "coordinates"
+    ).textContent =
+        coordinates;
+
+
+    document.getElementById(
+        "directions"
+    ).href =
+        "https://www.google.com/maps/dir/?api=1&destination=" +
+        location.latitude +
+        "," +
+        location.longitude;
+
+
+    document.getElementById(
+        "mapFrame"
+    ).src =
+        "https://maps.google.com/maps?q=" +
+        location.latitude +
+        "," +
+        location.longitude +
+        "&z=18&output=embed";
+
+
+    document.getElementById(
+        "shareButton"
+    ).addEventListener(
+        "click",
+        shareLocation
+    );
+
+
+    document.getElementById(
+        "copyButton"
+    ).addEventListener(
+        "click",
+        copyCoordinates
+    );
+
+
+    document.getElementById(
+        "loading"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "locationContent"
+    ).style.display =
+        "block";
+
+}
+
+
+function showError(
+    message
+) {
+
+    document.getElementById(
+        "loading"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "error"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "errorMessage"
+    ).textContent =
+        message;
+
+}
+
+
+async function shareLocation() {
+
+    const url =
+        window.location.href;
+
+
+    const shareData = {
+
+        title:
+            currentLocation.name,
+
+        text:
+            "Location: " +
+            currentLocation.name,
+
+        url:
+            url
+
+    };
+
+
+    try {
+
+        if (
+            navigator.share
+        ) {
+
+            await navigator.share(
+                shareData
+            );
+
+        }
+
+        else {
+
+            await navigator.clipboard.writeText(
+                url
+            );
+
+            showShareMessage(
+                "Location link copied!"
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.log(
+            "Share cancelled."
+        );
+
+    }
+
+}
+
+
+async function copyCoordinates() {
+
+    const coordinates =
+        currentLocation.latitude +
+        ", " +
+        currentLocation.longitude;
+
+
+    try {
+
+        await navigator.clipboard.writeText(
+            coordinates
+        );
+
+
+        showShareMessage(
+            "Coordinates copied!"
+        );
+
+    }
+
+    catch (error) {
+
+        showShareMessage(
+            "Unable to copy coordinates."
+        );
+
+    }
+
+}
+
+
+function showShareMessage(
+    message
+) {
+
+    const element =
+        document.getElementById(
+            "shareMessage"
+        );
+
+
+    element.textContent =
+        message;
+
+
+    element.style.display =
+        "block";
+
+
+    setTimeout(
+        function() {
+
+            element.style.display =
+                "none";
+
+        },
+        2500
+    );
+
+}
+
 
 loadLocation();
 
