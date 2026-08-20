@@ -130,15 +130,29 @@ h1 {
 
 
 .location-image {
-
     width: 100%;
-
-    max-height: 500px;
-
-    object-fit: cover;
-
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    display: block;
     border-radius: 12px;
+}
 
+@media (max-width: 600px) {
+
+    .location-container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .location-image {
+        width: 100%;
+        height: auto;
+    }
+
+    #map {
+        height: 350px;
+    }
 }
 
 
