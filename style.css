@@ -131,7 +131,19 @@ a {
     font-weight: 800;
     letter-spacing: 0.5px;
 
+    overflow: hidden;
+
     box-shadow: var(--glow-blue);
+}
+
+.home-brand-logo img,
+.brand-logo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
 }
 
 .home-brand-text,
