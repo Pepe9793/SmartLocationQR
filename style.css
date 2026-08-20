@@ -1318,3 +1318,252 @@
     }
 
 }
+
+/* =====================================================
+   TRUE MOBILE QR VIEW
+   ===================================================== */
+
+@media screen and (max-width: 600px) {
+
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background: #f5f6f8;
+    }
+
+    /* HEADER */
+
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: white;
+    }
+
+    .header-inner {
+        height: 48px;
+        padding: 6px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .back-link {
+        font-size: 12px !important;
+        margin: 0 !important;
+    }
+
+    .brand {
+        width: auto !important;
+        gap: 6px;
+    }
+
+    .brand-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 7px;
+        font-size: 9px;
+    }
+
+    .brand-title {
+        font-size: 12px;
+    }
+
+    .brand-subtitle {
+        display: none;
+    }
+
+
+    /* MAIN */
+
+    .location-page {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 12px 10px 25px;
+    }
+
+
+    /* TITLE */
+
+    .location-header {
+        margin: 0 0 10px;
+        text-align: center;
+    }
+
+    .location-badge {
+        font-size: 10px;
+        padding: 4px 9px;
+        margin-bottom: 4px;
+    }
+
+    .location-header h1 {
+        font-size: 26px;
+        line-height: 1.1;
+        margin: 0 0 4px;
+    }
+
+    .location-header p {
+        font-size: 11px;
+        line-height: 1.3;
+        margin: 0;
+    }
+
+
+    /* PHOTO - COMPACT */
+
+    .location-photo-card {
+        width: 100%;
+        padding: 3px;
+        margin: 0;
+        border-radius: 10px;
+        box-shadow: none;
+    }
+
+    .location-photo {
+        display: block !important;
+        width: 100% !important;
+
+        /*
+         * Keep the complete photo visible
+         * without making the page enormous.
+         */
+        height: 230px !important;
+
+        object-fit: contain !important;
+
+        background: #111827;
+
+        border-radius: 8px;
+    }
+
+
+    /* INFORMATION */
+
+    .info-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        gap: 7px;
+
+        margin-top: 8px;
+    }
+
+    .info-item {
+        min-width: 0;
+
+        padding: 9px;
+
+        margin: 0;
+
+        gap: 7px;
+
+        border-radius: 8px;
+
+        box-shadow: none;
+    }
+
+    .info-icon {
+        width: 28px;
+        height: 28px;
+
+        font-size: 13px;
+
+        border-radius: 7px;
+    }
+
+    .info-label {
+        font-size: 9px;
+        margin-bottom: 2px;
+    }
+
+    .info-value {
+        font-size: 10px;
+        line-height: 1.2;
+    }
+
+
+    /* MAP */
+
+    .content-section {
+        margin-top: 10px;
+    }
+
+    .section-title {
+        margin-bottom: 5px;
+        gap: 5px;
+    }
+
+    .section-title span {
+        font-size: 14px;
+    }
+
+    .section-title h2 {
+        font-size: 14px;
+    }
+
+    .map-container {
+        width: 100% !important;
+
+        height: 190px !important;
+
+        border-radius: 9px;
+
+        box-shadow: none;
+    }
+
+    .map-container iframe {
+        width: 100% !important;
+
+        height: 190px !important;
+
+        min-height: 190px !important;
+    }
+
+
+    /* BUTTONS */
+
+    .actions {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            1.4fr 1fr 1fr;
+
+        gap: 6px;
+
+        margin-top: 9px;
+    }
+
+    .primary-button,
+    .secondary-button {
+
+        width: 100%;
+
+        min-height: 42px;
+
+        padding: 7px 5px;
+
+        border-radius: 8px;
+
+        font-size: 10px;
+
+        gap: 3px;
+    }
+
+
+    /* FOOTER */
+
+    .site-footer {
+        padding: 15px 10px;
+        font-size: 9px;
+    }
+
+    .site-footer p {
+        margin: 2px;
+    }
+
+}
