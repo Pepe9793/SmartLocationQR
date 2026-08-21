@@ -56,15 +56,18 @@ def create_labeled_qr(data, text, filename, subtitle="Scan for location details"
         font_main_title = ImageFont.truetype("segoeuib.ttf", 36) # Conference Title (Header)
         font_loc_name = ImageFont.truetype("segoeuib.ttf", 26)   # Location Name (Footer)
         font_sub = ImageFont.truetype("segoeui.ttf", 16)         # Instructions (Footer)
+        font_tiny = ImageFont.truetype("segoeui.ttf", 10)        # Corner Watermarks
     except IOError:
         try:
             font_main_title = ImageFont.truetype("arialbd.ttf", 36)
             font_loc_name = ImageFont.truetype("arialbd.ttf", 26)
             font_sub = ImageFont.truetype("arial.ttf", 16)
+            font_tiny = ImageFont.truetype("arial.ttf", 10)
         except IOError:
             font_main_title = ImageFont.load_default()
             font_loc_name = ImageFont.load_default()
             font_sub = ImageFont.load_default()
+            font_tiny = ImageFont.load_default()
             
     # Draw Header (Logo + Conference Title)
     conf_title = "iSmartComp2026"
@@ -104,6 +107,21 @@ def create_labeled_qr(data, text, filename, subtitle="Scan for location details"
     text_x_inst = (qr_w - (bbox_inst[2] - bbox_inst[0])) // 2
     text_y_inst = text_y_loc + 35
     draw.text((text_x_inst, text_y_inst), instruction_text, fill=text_color, font=font_sub)
+    
+    # Draw Tiny 'R' in Corners
+    corner_text = "R"
+    corner_color = "#334155" # Subtle slate color
+    
+    # Top Left
+    draw.text((5, 2), corner_text, fill=corner_color, font=font_tiny)
+    
+    # Bottom Right
+    bbox_corner = draw.textbbox((0, 0), corner_text, font=font_tiny)
+    corner_w = bbox_corner[2] - bbox_corner[0]
+    corner_h = bbox_corner[3] - bbox_corner[1]
+    
+    total_h = qr_h + header_h + footer_h
+    draw.text((qr_w - corner_w - 5, total_h - corner_h - 7), corner_text, fill=corner_color, font=font_tiny)
     
     filepath = os.path.join(OUTPUT_FOLDER, filename)
     new_img.save(filepath)
