@@ -340,7 +340,7 @@ function displayLocations(
                             ${location.name}
                         </h3>
 
-                        <p>
+                        <p class="highlight-desc">
                             ${location.description || ""}
                         </p>
 

@@ -1675,3 +1675,19 @@ main {
     }
 
 }
+
+/* Description Highlight */
+.highlight-desc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--blue);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-sm);
+    margin: 1.5rem auto;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    text-align: center;
+    box-shadow: var(--glow-blue);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
