@@ -1410,7 +1410,7 @@ main {
 
     color: var(--text-muted);
 
-    font-size: 9px;
+    font-size: 13px;
 }
 
 .footer-line {
@@ -1425,7 +1425,7 @@ main {
 .footer-copy {
     color: var(--text-muted);
 
-    font-size: 8px;
+    font-size: 12px;
 }
 
 .footer-author {
@@ -1433,7 +1433,7 @@ main {
 
     color: var(--text-secondary);
 
-    font-size: 9px;
+    font-size: 13px;
 }
 
 .footer-author strong {
@@ -1447,7 +1447,7 @@ main {
 
     color: var(--blue);
 
-    font-size: 9px;
+    font-size: 13px;
 
     text-decoration: none;
 
@@ -1640,11 +1640,11 @@ main {
         padding: 26px 12px 22px;
     }
 
-    .footer-brand { font-size: 13px; }
-    .footer-campus { font-size: 8px; }
-    .footer-copy { font-size: 7px; }
-    .footer-author { font-size: 8px; }
-    .footer-email { font-size: 8px; word-break: break-all; }
+    .footer-brand { font-size: 15px; }
+    .footer-campus { font-size: 12px; }
+    .footer-copy { font-size: 12px; }
+    .footer-author { font-size: 12px; }
+    .footer-email { font-size: 12px; word-break: break-all; }
 
     /* location page */
 
