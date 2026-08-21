@@ -2,6 +2,8 @@ import json
 import os
 import qrcode
 from PIL import Image, ImageDraw, ImageFont
+from qrcode.image.styledpil import StyledPilImage
+from qrcode.image.styles.colormasks import HorizontalGradiantColorMask
 
 BASE_URL = "https://kr9793.github.io/SmartLocationQR/location.html?id="
 LOCATIONS_FILE = "../assets/data/locations.json"
@@ -26,10 +28,17 @@ def create_labeled_qr(data, text, filename, subtitle="iSmartComp2026 - Scan for 
     
     # Theme colors
     bg_color = "#05070d"  # Dark background
-    qr_color = "#22d3ee"  # Cyan dots
     text_color = "#f1f5f9" # Light text
     
-    qr_img = qr.make_image(fill_color=qr_color, back_color=bg_color).convert('RGB')
+    # Use gradient for QR code (Cyan to Purple)
+    qr_img = qr.make_image(
+        image_factory=StyledPilImage,
+        color_mask=HorizontalGradiantColorMask(
+            back_color=(5, 7, 13),      # #05070d
+            left_color=(34, 211, 238),  # #22d3ee
+            right_color=(168, 85, 247)  # #a855f7
+        )
+    ).convert('RGB')
     
     # Calculate sizes
     qr_w, qr_h = qr_img.size
