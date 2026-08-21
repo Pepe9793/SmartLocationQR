@@ -112,16 +112,23 @@ def create_labeled_qr(data, text, filename, subtitle="Scan for location details"
     corner_text = "RK"
     corner_color = "#334155" # Subtle slate color
     
-    # Top Left
-    draw.text((5, 2), corner_text, fill=corner_color, font=font_tiny)
-    
-    # Bottom Right
     bbox_corner = draw.textbbox((0, 0), corner_text, font=font_tiny)
     corner_w = bbox_corner[2] - bbox_corner[0]
     corner_h = bbox_corner[3] - bbox_corner[1]
     
+    pad = 4
+    radius = max(corner_w, corner_h) / 2 + pad
+    
+    # Top Left
+    tl_cx, tl_cy = 15, 15
+    draw.ellipse([tl_cx - radius, tl_cy - radius, tl_cx + radius, tl_cy + radius], outline=corner_color, width=1)
+    draw.text((tl_cx, tl_cy), corner_text, fill=corner_color, font=font_tiny, anchor="mm")
+    
+    # Bottom Right
     total_h = qr_h + header_h + footer_h
-    draw.text((qr_w - corner_w - 5, total_h - corner_h - 7), corner_text, fill=corner_color, font=font_tiny)
+    br_cx, br_cy = qr_w - 15, total_h - 15
+    draw.ellipse([br_cx - radius, br_cy - radius, br_cx + radius, br_cy + radius], outline=corner_color, width=1)
+    draw.text((br_cx, br_cy), corner_text, fill=corner_color, font=font_tiny, anchor="mm")
     
     filepath = os.path.join(OUTPUT_FOLDER, filename)
     new_img.save(filepath)
