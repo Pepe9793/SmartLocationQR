@@ -3,7 +3,7 @@ import os
 
 import qrcode
 
-BASE_URL = "https://pepe9793.github.io/SmartLocationQR/location.html?id="
+BASE_URL = "https://kr9793.github.io/SmartLocationQR/location.html?id="
 
 LOCATIONS_FILE = "../assets/data/locations.json"
 OUTPUT_FOLDER = "../QR_Codes"
