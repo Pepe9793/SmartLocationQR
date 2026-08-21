@@ -23,14 +23,20 @@ def create_labeled_qr(data, text, filename):
     )
     qr.add_data(data)
     qr.make(fit=True)
-    qr_img = qr.make_image(fill_color="black", back_color="white").convert('RGB')
+    
+    # Theme colors
+    bg_color = "#05070d"  # Dark background
+    qr_color = "#22d3ee"  # Cyan dots
+    text_color = "#f1f5f9" # Light text
+    
+    qr_img = qr.make_image(fill_color=qr_color, back_color=bg_color).convert('RGB')
     
     # Calculate sizes
     qr_w, qr_h = qr_img.size
     text_h = 70  # Space for text at the bottom
     
-    # Create new image with extra space at bottom
-    new_img = Image.new('RGB', (qr_w, qr_h + text_h), 'white')
+    # Create new image with extra space at bottom using theme background
+    new_img = Image.new('RGB', (qr_w, qr_h + text_h), bg_color)
     new_img.paste(qr_img, (0, 0))
     
     draw = ImageDraw.Draw(new_img)
@@ -48,11 +54,10 @@ def create_labeled_qr(data, text, filename):
     bbox = draw.textbbox((0, 0), text, font=font)
     text_w = bbox[2] - bbox[0]
     
-    # If text is too wide, scale it down or just center it (it might bleed off edges)
-    # We'll just center it
+    # Center text
     text_x = (qr_w - text_w) // 2
     text_y = qr_h + 15
-    draw.text((text_x, text_y), text, fill="black", font=font)
+    draw.text((text_x, text_y), text, fill=text_color, font=font)
     
     filepath = os.path.join(OUTPUT_FOLDER, filename)
     new_img.save(filepath)
