@@ -16,7 +16,7 @@ with open(LOCATIONS_FILE, "r", encoding="utf-8") as f:
 
 locations = sorted(locations, key=lambda loc: loc["id"])
 
-def create_labeled_qr(data, text, filename, subtitle="iSmartComp2026 - Scan for location details"):
+def create_labeled_qr(data, text, filename, subtitle="Scan for location details"):
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_H,
@@ -42,8 +42,8 @@ def create_labeled_qr(data, text, filename, subtitle="iSmartComp2026 - Scan for 
     
     # Calculate sizes
     qr_w, qr_h = qr_img.size
-    header_h = 50  # Space for conference title at top
-    footer_h = 70  # Space for location name at bottom
+    header_h = 70  # Space for conference title at top
+    footer_h = 80  # Space for location name and instructions at bottom
     
     # Create new image with extra space at top and bottom
     new_img = Image.new('RGB', (qr_w, qr_h + header_h + footer_h), bg_color)
@@ -53,29 +53,38 @@ def create_labeled_qr(data, text, filename, subtitle="iSmartComp2026 - Scan for 
     
     # Try to load appealing fonts (Segoe UI on Windows), fallback to Arial, then default
     try:
-        font_title = ImageFont.truetype("segoeuib.ttf", 28) # Segoe UI Bold (Location name)
-        font_sub = ImageFont.truetype("segoeui.ttf", 20)    # Segoe UI Regular (Conference title)
+        font_main_title = ImageFont.truetype("segoeuib.ttf", 36) # Conference Title (Header)
+        font_loc_name = ImageFont.truetype("segoeuib.ttf", 26)   # Location Name (Footer)
+        font_sub = ImageFont.truetype("segoeui.ttf", 16)         # Instructions (Footer)
     except IOError:
         try:
-            font_title = ImageFont.truetype("arialbd.ttf", 26)
-            font_sub = ImageFont.truetype("arial.ttf", 18)
+            font_main_title = ImageFont.truetype("arialbd.ttf", 36)
+            font_loc_name = ImageFont.truetype("arialbd.ttf", 26)
+            font_sub = ImageFont.truetype("arial.ttf", 16)
         except IOError:
-            font_title = ImageFont.load_default()
+            font_main_title = ImageFont.load_default()
+            font_loc_name = ImageFont.load_default()
             font_sub = ImageFont.load_default()
             
-    # Center header (conference title/subtitle)
-    bbox_sub = draw.textbbox((0, 0), subtitle, font=font_sub)
-    text_w_sub = bbox_sub[2] - bbox_sub[0]
-    text_x_sub = (qr_w - text_w_sub) // 2
-    text_y_sub = (header_h - (bbox_sub[3] - bbox_sub[1])) // 2  # Center vertically in header
-    draw.text((text_x_sub, text_y_sub), subtitle, fill=text_color, font=font_sub)
+    # Draw Header (Conference Title)
+    conf_title = "iSmartComp2026"
+    bbox_conf = draw.textbbox((0, 0), conf_title, font=font_main_title)
+    text_x_conf = (qr_w - (bbox_conf[2] - bbox_conf[0])) // 2
+    text_y_conf = (header_h - (bbox_conf[3] - bbox_conf[1])) // 2 - 5
+    draw.text((text_x_conf, text_y_conf), conf_title, fill=text_color, font=font_main_title)
 
-    # Center footer (location name/text)
-    bbox_title = draw.textbbox((0, 0), text, font=font_title)
-    text_w_title = bbox_title[2] - bbox_title[0]
-    text_x_title = (qr_w - text_w_title) // 2
-    text_y_title = header_h + qr_h + 15
-    draw.text((text_x_title, text_y_title), text, fill=text_color, font=font_title)
+    # Draw Footer (Location Name)
+    bbox_loc = draw.textbbox((0, 0), text, font=font_loc_name)
+    text_x_loc = (qr_w - (bbox_loc[2] - bbox_loc[0])) // 2
+    text_y_loc = header_h + qr_h + 15
+    draw.text((text_x_loc, text_y_loc), text, fill=text_color, font=font_loc_name)
+    
+    # Draw Footer (Instructions)
+    instruction_text = subtitle
+    bbox_inst = draw.textbbox((0, 0), instruction_text, font=font_sub)
+    text_x_inst = (qr_w - (bbox_inst[2] - bbox_inst[0])) // 2
+    text_y_inst = text_y_loc + 35
+    draw.text((text_x_inst, text_y_inst), instruction_text, fill=text_color, font=font_sub)
     
     filepath = os.path.join(OUTPUT_FOLDER, filename)
     new_img.save(filepath)
