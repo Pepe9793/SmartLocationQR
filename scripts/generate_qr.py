@@ -66,10 +66,29 @@ def create_labeled_qr(data, text, filename, subtitle="Scan for location details"
             font_loc_name = ImageFont.load_default()
             font_sub = ImageFont.load_default()
             
-    # Draw Header (Conference Title)
+    # Draw Header (Logo + Conference Title)
     conf_title = "iSmartComp2026"
     bbox_conf = draw.textbbox((0, 0), conf_title, font=font_main_title)
-    text_x_conf = (qr_w - (bbox_conf[2] - bbox_conf[0])) // 2
+    text_w_conf = bbox_conf[2] - bbox_conf[0]
+    
+    logo_size = 38
+    gap = 12
+    total_w = logo_size + gap + text_w_conf
+    start_x = (qr_w - total_w) // 2
+    
+    logo_path = "../assets/images/conference_logo.png"
+    if os.path.exists(logo_path):
+        logo = Image.open(logo_path).convert('RGBA')
+        logo = logo.resize((logo_size, logo_size), Image.Resampling.LANCZOS)
+        logo_y = (header_h - logo_size) // 2
+        new_img.paste(logo, (start_x, logo_y), logo)
+    else:
+        # Fallback if logo not found, just center text
+        start_x = (qr_w - text_w_conf) // 2
+        logo_size = 0
+        gap = 0
+        
+    text_x_conf = start_x + logo_size + gap
     text_y_conf = (header_h - (bbox_conf[3] - bbox_conf[1])) // 2 - 5
     draw.text((text_x_conf, text_y_conf), conf_title, fill=text_color, font=font_main_title)
 
