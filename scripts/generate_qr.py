@@ -42,39 +42,40 @@ def create_labeled_qr(data, text, filename, subtitle="iSmartComp2026 - Scan for 
     
     # Calculate sizes
     qr_w, qr_h = qr_img.size
-    text_h = 100  # Space for title and subtitle
+    header_h = 50  # Space for conference title at top
+    footer_h = 70  # Space for location name at bottom
     
-    # Create new image with extra space at bottom using theme background
-    new_img = Image.new('RGB', (qr_w, qr_h + text_h), bg_color)
-    new_img.paste(qr_img, (0, 0))
+    # Create new image with extra space at top and bottom
+    new_img = Image.new('RGB', (qr_w, qr_h + header_h + footer_h), bg_color)
+    new_img.paste(qr_img, (0, header_h))
     
     draw = ImageDraw.Draw(new_img)
     
     # Try to load appealing fonts (Segoe UI on Windows), fallback to Arial, then default
     try:
-        font_title = ImageFont.truetype("segoeuib.ttf", 28) # Segoe UI Bold
-        font_sub = ImageFont.truetype("segoeui.ttf", 16)    # Segoe UI Regular
+        font_title = ImageFont.truetype("segoeuib.ttf", 28) # Segoe UI Bold (Location name)
+        font_sub = ImageFont.truetype("segoeui.ttf", 20)    # Segoe UI Regular (Conference title)
     except IOError:
         try:
             font_title = ImageFont.truetype("arialbd.ttf", 26)
-            font_sub = ImageFont.truetype("arial.ttf", 16)
+            font_sub = ImageFont.truetype("arial.ttf", 18)
         except IOError:
             font_title = ImageFont.load_default()
             font_sub = ImageFont.load_default()
             
-    # Center title
-    bbox_title = draw.textbbox((0, 0), text, font=font_title)
-    text_w_title = bbox_title[2] - bbox_title[0]
-    text_x_title = (qr_w - text_w_title) // 2
-    text_y_title = qr_h + 15
-    draw.text((text_x_title, text_y_title), text, fill=text_color, font=font_title)
-    
-    # Center subtitle
+    # Center header (conference title/subtitle)
     bbox_sub = draw.textbbox((0, 0), subtitle, font=font_sub)
     text_w_sub = bbox_sub[2] - bbox_sub[0]
     text_x_sub = (qr_w - text_w_sub) // 2
-    text_y_sub = text_y_title + 35
+    text_y_sub = (header_h - (bbox_sub[3] - bbox_sub[1])) // 2  # Center vertically in header
     draw.text((text_x_sub, text_y_sub), subtitle, fill=text_color, font=font_sub)
+
+    # Center footer (location name/text)
+    bbox_title = draw.textbbox((0, 0), text, font=font_title)
+    text_w_title = bbox_title[2] - bbox_title[0]
+    text_x_title = (qr_w - text_w_title) // 2
+    text_y_title = header_h + qr_h + 15
+    draw.text((text_x_title, text_y_title), text, fill=text_color, font=font_title)
     
     filepath = os.path.join(OUTPUT_FOLDER, filename)
     new_img.save(filepath)
