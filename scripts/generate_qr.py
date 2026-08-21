@@ -108,8 +108,8 @@ def create_labeled_qr(data, text, filename, subtitle="Scan for location details"
     text_y_inst = text_y_loc + 35
     draw.text((text_x_inst, text_y_inst), instruction_text, fill=text_color, font=font_sub)
     
-    # Draw Tiny 'R' in Corners
-    corner_text = "R"
+    # Draw Tiny 'RK' in Corners
+    corner_text = "RK"
     corner_color = "#334155" # Subtle slate color
     
     # Top Left
