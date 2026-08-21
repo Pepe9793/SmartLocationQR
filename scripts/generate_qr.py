@@ -38,7 +38,8 @@ for location in locations:
 
     image = qr.make_image()
 
-    filename = f"QR_{location_id:02d}.png"
+    safe_name = name.replace(' ', '_').replace('/', '_')
+    filename = f"QR_{safe_name}.png"
 
     filepath = os.path.join(
         OUTPUT_FOLDER,
