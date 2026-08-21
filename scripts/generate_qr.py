@@ -41,13 +41,13 @@ def create_labeled_qr(data, text, filename, subtitle="iSmartComp2026 - Scan for 
     
     draw = ImageDraw.Draw(new_img)
     
-    # Try to load fonts, fallback to default
+    # Try to load appealing fonts (Segoe UI on Windows), fallback to Arial, then default
     try:
-        font_title = ImageFont.truetype("arialbd.ttf", 26) # Arial Bold
-        font_sub = ImageFont.truetype("arial.ttf", 16)
+        font_title = ImageFont.truetype("segoeuib.ttf", 28) # Segoe UI Bold
+        font_sub = ImageFont.truetype("segoeui.ttf", 16)    # Segoe UI Regular
     except IOError:
         try:
-            font_title = ImageFont.truetype("arial.ttf", 26)
+            font_title = ImageFont.truetype("arialbd.ttf", 26)
             font_sub = ImageFont.truetype("arial.ttf", 16)
         except IOError:
             font_title = ImageFont.load_default()
