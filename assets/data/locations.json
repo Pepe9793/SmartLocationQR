@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "L-122",
-        "description": "Designated presentation room for iSmartComp2026 technical sessions.",
+        "description": "L-122, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.729813,
@@ -12,7 +12,7 @@
     {
         "id": 2,
         "name": "L-120",
-        "description": "Designated presentation room for iSmartComp2026 technical sessions.",
+        "description": "L-120, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.729803,
@@ -22,7 +22,7 @@
     {
         "id": 3,
         "name": "L-222",
-        "description": "Interactive session room for iSmartComp2026 delegates and speakers.",
+        "description": "L-222, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.729934,
@@ -32,7 +32,7 @@
     {
         "id": 4,
         "name": "L-221",
-        "description": "Conference hall hosting workshops and poster presentations for iSmartComp2026.",
+        "description": "L-221, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.729947,
@@ -42,7 +42,7 @@
     {
         "id": 5,
         "name": "L-220",
-        "description": "Dedicated hall for iSmartComp2026 paper presentations and Q&A sessions.",
+        "description": "L-220, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.729927,
@@ -52,7 +52,7 @@
     {
         "id": 6,
         "name": "L-219",
-        "description": "Designated presentation room for iSmartComp2026 technical sessions.",
+        "description": "L-219, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.729613,
@@ -62,7 +62,7 @@
     {
         "id": 7,
         "name": "L-218",
-        "description": "Interactive session room for iSmartComp2026 delegates and speakers.",
+        "description": "L-218, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.729542,
@@ -72,7 +72,7 @@
     {
         "id": 8,
         "name": "L-217",
-        "description": "Dedicated hall for iSmartComp2026 paper presentations and Q&A sessions.",
+        "description": "L-217, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.729571,
@@ -82,7 +82,7 @@
     {
         "id": 9,
         "name": "Shanti Swaroop Bhatnagar Hall",
-        "description": "Main auditorium for iSmartComp2026 keynote speeches and opening ceremonies.",
+        "description": "Shanti Swaroop Bhatnagar Hall, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.731176,
@@ -92,7 +92,7 @@
     {
         "id": 10,
         "name": "Narendra Karmarkar Hall",
-        "description": "Primary venue for iSmartComp2026 plenary sessions and major announcements.",
+        "description": "Narendra Karmarkar Hall, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.731345,
@@ -102,7 +102,7 @@
     {
         "id": 11,
         "name": "Aryabhatta Hall",
-        "description": "Conference hall for iSmartComp2026 invited talks and special track events.",
+        "description": "Aryabhatta Hall, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.730919,
@@ -112,7 +112,7 @@
     {
         "id": 12,
         "name": "L-117",
-        "description": "Conference hall hosting workshops and poster presentations for iSmartComp2026.",
+        "description": "L-117, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.731429,
@@ -122,7 +122,7 @@
     {
         "id": 13,
         "name": "L-116",
-        "description": "Dedicated hall for iSmartComp2026 paper presentations and Q&A sessions.",
+        "description": "L-116, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.729573,
@@ -132,7 +132,7 @@
     {
         "id": 14,
         "name": "L-118",
-        "description": "Dedicated hall for iSmartComp2026 paper presentations and Q&A sessions.",
+        "description": "L-118, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.729617,
@@ -142,7 +142,7 @@
     {
         "id": 15,
         "name": "L-119",
-        "description": "Dedicated hall for iSmartComp2026 paper presentations and Q&A sessions.",
+        "description": "L-119, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.729662,
@@ -152,7 +152,7 @@
     {
         "id": 16,
         "name": "L-121",
-        "description": "Dedicated hall for iSmartComp2026 paper presentations and Q&A sessions.",
+        "description": "L-121, MMMUT area, Gorakhpur, Uttar Pradesh, India.",
         "category": "Conference Hall",
         "icon": "\ud83d\udcd6",
         "latitude": 26.729795,
