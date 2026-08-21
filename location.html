@@ -21,239 +21,215 @@
 
 <body>
 
-<header class="topbar">
+    <header class="topbar">
 
-    <a href="index.html" class="back">
-        <span>‹</span>
-        Locations
-    </a>
-
-    <div class="brand">
-        <div class="brand-logo">
-        <img src="favicon.svg" alt="Smart Location QR logo">
-    </div>
-
-        <div class="brand-text">
-            <strong>Smart Location QR</strong>
-            <small>MMMUT • Gorakhpur</small>
-        </div>
-    </div>
-
-    <nav class="home-nav">
-        <a href="index.html" class="nav-link">Home</a>
-    </nav>
-
-</header>
-
-
-<main>
-
-    <!-- Loading -->
-
-    <div id="loading" class="loading">
-        <div class="loader"></div>
-        <p>Loading location...</p>
-    </div>
-
-
-    <!-- Error -->
-
-    <div id="error" class="error" style="display:none;">
-
-        <div class="error-symbol">!</div>
-
-        <h2>Location not found</h2>
-
-        <p id="errorMessage">
-            This location could not be loaded.
-        </p>
-
-        <a href="index.html" class="error-button">
-            View Locations
+        <a href="index.html" class="back">
+            <span>‹</span>
+            Locations
         </a>
 
-    </div>
-
-
-    <!-- Main Location -->
-
-    <div id="locationContent" class="location-content" style="display:none;">
-
-        <!-- TITLE -->
-
-        <section class="hero">
-
-            <div class="location-type" id="locationType">
-                CAMPUS LOCATION
+        <div class="brand">
+            <div class="brand-logo">
+                <img src="favicon.svg" alt="Smart Location QR logo">
             </div>
 
-            <h1 id="name" style="text-align: center;">L-122</h1>
-
-            <p id="description"></p>
-
-        </section>
-
-
-        <!-- PHOTO -->
-
-        <section class="photo-card">
-
-            <img
-                id="locationPhoto"
-                src=""
-                alt="Location"
-            >
-
-        </section>
-
-
-        <!-- BASIC INFORMATION -->
-
-        <section class="details">
-
-            <div class="detail">
-
-                <div class="detail-icon">
-                    <span>📍</span>
-                </div>
-
-                <div>
-                    <small>LOCATION</small>
-                    <strong>MMMUT, Gorakhpur</strong>
-                </div>
-
+            <div class="brand-text">
+                <strong>Smart Location QR</strong>
+                <small>MMMUT • Gorakhpur</small>
             </div>
+        </div>
+
+        <nav class="home-nav">
+            <a href="index.html" class="nav-link">Home</a>
+        </nav>
+
+    </header>
 
 
-            <div class="detail">
+    <main>
 
-                <div class="detail-icon">
-                    <span>🧭</span>
-                </div>
+        <!-- Loading -->
 
-                <div>
-                    <small>COORDINATES</small>
-                    <strong id="coordinates"></strong>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- MAP -->
-
-        <section class="map-section" id="mapSection">
-
-            <div class="section-heading">
-
-                <div>
-                    <small>LOCATION</small>
-                    <h2>Map Preview</h2>
-                </div>
-
-                <span class="map-pin">●</span>
-
-            </div>
-
-
-            <div class="map">
-
-                <iframe
-                    id="mapFrame"
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-
-            </div>
-
-        </section>
-
-
-        <!-- MAP UNAVAILABLE NOTICE -->
-
-        <div
-            id="mapUnavailable"
-            class="message"
-            style="display:none; margin-bottom: 22px;">
-            Coordinates unavailable for this location — map and directions are disabled.
+        <div id="loading" class="loading">
+            <div class="loader"></div>
+            <p>Loading location...</p>
         </div>
 
 
-        <!-- PRIMARY ACTION -->
+        <!-- Error -->
 
-        <a
-            id="directions"
-            class="directions"
-            target="_blank"
-            rel="noopener"
-        >
+        <div id="error" class="error" style="display:none;">
 
-            <span class="direction-icon">↗</span>
+            <div class="error-symbol">!</div>
 
-            <span>
-                <strong>Get Directions</strong>
-                <small>Open location in Google Maps</small>
-            </span>
+            <h2>Location not found</h2>
 
-            <span class="arrow">›</span>
+            <p id="errorMessage">
+                This location could not be loaded.
+            </p>
 
-        </a>
-
-
-        <!-- SECONDARY ACTIONS -->
-
-        <div class="secondary-actions">
-
-            <button
-                id="shareButton"
-                type="button"
-            >
-                ↗
-                <span>Share</span>
-            </button>
-
-
-            <button
-                id="copyButton"
-                type="button"
-            >
-                ⧉
-                <span>Copy Coordinates</span>
-            </button>
+            <a href="index.html" class="error-button">
+                View Locations
+            </a>
 
         </div>
 
 
-        <div
-            id="shareMessage"
-            class="message"
-            style="display:none;">
+        <!-- Main Location -->
+
+        <div id="locationContent" class="location-content" style="display:none;">
+
+            <!-- TITLE -->
+
+            <section class="hero">
+
+                <div class="location-type" id="locationType">
+                    CAMPUS LOCATION
+                </div>
+
+                <h1 id="name" style="text-align: center;">L-122</h1>
+
+                <p id="description"></p>
+
+            </section>
+
+
+            <!-- PHOTO -->
+
+            <section class="photo-card">
+
+                <img id="locationPhoto" src="" alt="Location">
+
+            </section>
+
+
+            <!-- BASIC INFORMATION -->
+
+            <section class="details">
+
+                <div class="detail">
+
+                    <div class="detail-icon">
+                        <span>📍</span>
+                    </div>
+
+                    <div>
+                        <small>LOCATION</small>
+                        <strong>MMMUT, Gorakhpur</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <div class="detail-icon">
+                        <span>🧭</span>
+                    </div>
+
+                    <div>
+                        <small>COORDINATES</small>
+                        <strong id="coordinates"></strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MAP -->
+
+            <section class="map-section" id="mapSection">
+
+                <div class="section-heading">
+
+                    <div>
+                        <small>LOCATION</small>
+                        <h2>Map Preview</h2>
+                    </div>
+
+                    <span class="map-pin">●</span>
+
+                </div>
+
+
+                <div class="map">
+
+                    <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+
+                </div>
+
+            </section>
+
+
+            <!-- MAP UNAVAILABLE NOTICE -->
+
+            <div id="mapUnavailable" class="message" style="display:none; margin-bottom: 22px;">
+                Coordinates unavailable for this location — map and directions are disabled.
+            </div>
+
+
+            <!-- PRIMARY ACTION -->
+
+            <a id="directions" class="directions" target="_blank" rel="noopener">
+
+                <span class="direction-icon">↗</span>
+
+                <span>
+                    <strong>Get Directions</strong>
+                    <small>Open location in Google Maps</small>
+                </span>
+
+                <span class="arrow">›</span>
+
+            </a>
+
+
+            <!-- SECONDARY ACTIONS -->
+
+            <div class="secondary-actions">
+
+                <button id="shareButton" type="button">
+                    ↗
+                    <span>Share</span>
+                </button>
+
+
+                <button id="copyButton" type="button">
+                    ⧉
+                    <span>Copy Coordinates</span>
+                </button>
+
+            </div>
+
+
+            <div id="shareMessage" class="message" style="display:none;">
+            </div>
+
         </div>
 
-    </div>
-
-</main>
+    </main>
 
 
-<footer class="site-footer">
+    <footer class="site-footer">
 
-    <div class="footer-copy">
-        © 2026 Smart Location QR.
-    </div>
+        <div class="footer-copy">
+            © 2026 Smart Location QR.
+        </div>
 
-    <div class="footer-author">
-        Developed by <strong>Avanish Kumar | Rohan Kushwaha | Ayush Mishra</strong>
-    </div>
+        <div class="footer-author">
+            Developed by <strong>Rohan Kushwaha | Ayush Mishra | Avanish Kumar</strong>
+        </div>
 
-    <div class="footer-campus">
-        ITCA • MMMUT • Gorakhpur
-    </div>
+        <div class="footer-campus">
+            ITCA • MMMUT • Gorakhpur
+        </div>
 
-</footer>
+    </footer>
 
 
-<script src="assets/js/location.js"></script>
+    <script src="assets/js/location.js"></script>
 
 </body>
 
