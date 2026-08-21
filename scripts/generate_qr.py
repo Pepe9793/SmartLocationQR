@@ -5,8 +5,8 @@ import qrcode
 
 BASE_URL = "https://pepe9793.github.io/SmartLocationQR/location.html?id="
 
-LOCATIONS_FILE = "locations.json"
-OUTPUT_FOLDER = "QR_Codes"
+LOCATIONS_FILE = "../assets/data/locations.json"
+OUTPUT_FOLDER = "../QR_Codes"
 
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 

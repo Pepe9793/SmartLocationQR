@@ -7,7 +7,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.729813,
         "longitude": 83.434478,
-        "image": "images/location1.jpeg"
+        "image": "assets/images/location1.jpeg"
     },
     {
         "id": 2,
@@ -17,7 +17,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.729803,
         "longitude": 83.434451,
-        "image": "images/location2.jpeg"
+        "image": "assets/images/location2.jpeg"
     },
     {
         "id": 3,
@@ -27,7 +27,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.729934,
         "longitude": 83.434353,
-        "image": "images/location3.jpeg"
+        "image": "assets/images/location3.jpeg"
     },
     {
         "id": 4,
@@ -37,7 +37,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.729947,
         "longitude": 83.434342,
-        "image": "images/location4.jpeg"
+        "image": "assets/images/location4.jpeg"
     },
     {
         "id": 5,
@@ -47,7 +47,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.729927,
         "longitude": 83.434391,
-        "image": "images/location5.jpeg"
+        "image": "assets/images/location5.jpeg"
     },
     {
         "id": 6,
@@ -57,7 +57,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.729613,
         "longitude": 83.434605,
-        "image": "images/location6.jpeg"
+        "image": "assets/images/location6.jpeg"
     },
     {
         "id": 7,
@@ -67,7 +67,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.729542,
         "longitude": 83.434642,
-        "image": "images/location7.jpeg"
+        "image": "assets/images/location7.jpeg"
     },
     {
         "id": 8,
@@ -77,7 +77,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.729571,
         "longitude": 83.434647,
-        "image": "images/location8.jpeg"
+        "image": "assets/images/location8.jpeg"
     },
     {
         "id": 9,
@@ -87,7 +87,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.731176,
         "longitude": 83.433606,
-        "image": "images/location9.jpeg"
+        "image": "assets/images/location9.jpeg"
     },
     {
         "id": 10,
@@ -97,7 +97,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.731345,
         "longitude": 83.433496,
-        "image": "images/location10.jpeg"
+        "image": "assets/images/location10.jpeg"
     },
     {
         "id": 11,
@@ -107,7 +107,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.730919,
         "longitude": 83.433672,
-        "image": "images/location11.jpeg"
+        "image": "assets/images/location11.jpeg"
     },
     {
         "id": 12,
@@ -117,7 +117,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.731429,
         "longitude": 83.433739,
-        "image": "images/location12.jpeg"
+        "image": "assets/images/location12.jpeg"
     },
     {
         "id": 13,
@@ -127,7 +127,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.729573,
         "longitude": 83.434594,
-        "image": "images/location13.jpeg"
+        "image": "assets/images/location13.jpeg"
     },
     {
         "id": 14,
@@ -137,7 +137,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.729617,
         "longitude": 83.434576,
-        "image": "images/location14.jpeg"
+        "image": "assets/images/location14.jpeg"
     },
     {
         "id": 15,
@@ -147,7 +147,7 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.729662,
         "longitude": 83.43454,
-        "image": "images/location15.jpeg"
+        "image": "assets/images/location15.jpeg"
     },
     {
         "id": 16,
@@ -157,6 +157,6 @@
         "icon": "\ud83d\udcd6",
         "latitude": 26.729795,
         "longitude": 83.434484,
-        "image": "images/location16.jpeg"
+        "image": "assets/images/location16.jpeg"
     }
 ]

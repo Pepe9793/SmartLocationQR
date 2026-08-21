@@ -11,7 +11,7 @@
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <link rel="stylesheet" href="style.css?v=31">
+    <link rel="stylesheet" href="assets/css/style.css?v=31">
 </head>
 
 <body>
@@ -81,45 +81,7 @@
 </footer>
 
 
-<script>
-
-let seconds = 5;
-
-const countdownEl =
-    document.getElementById(
-        "countdown"
-    );
-
-
-const timer =
-    setInterval(
-        () => {
-
-            seconds -= 1;
-
-
-            if (countdownEl) {
-
-                countdownEl.textContent =
-                    seconds;
-
-            }
-
-
-            if (seconds <= 0) {
-
-                clearInterval(timer);
-
-                window.location.href =
-                    "index.html";
-
-            }
-
-        },
-        1000
-    );
-
-</script>
+<script src="assets/js/404.js"></script>
 
 </body>
 
