@@ -4,13 +4,9 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="Smart Location QR - MMMUT Campus Location Directory"
-    >
+    <meta name="description" content="Smart Location QR - MMMUT Campus Location Directory">
 
     <meta name="theme-color" content="#05070d">
 
@@ -29,195 +25,175 @@
 
 <body>
 
-<header class="home-topbar">
+    <header class="home-topbar">
 
-    <div class="home-header-inner">
+        <div class="home-header-inner">
 
-        <div class="home-brand">
+            <div class="home-brand">
 
-            <div class="home-brand-logo">
-                <img src="favicon.svg" alt="Smart Location QR logo">
+                <div class="home-brand-logo">
+                    <img src="favicon.svg" alt="Smart Location QR logo">
+                </div>
+
+                <div class="home-brand-text">
+
+                    <strong>
+                        Smart Location QR
+                    </strong>
+
+                    <small>
+                        MMMUT • Gorakhpur
+                    </small>
+
+                </div>
+
             </div>
 
-            <div class="home-brand-text">
+            <nav class="home-nav">
 
-                <strong>
-                    Smart Location QR
-                </strong>
+                <a href="index.html" class="nav-link active">
+                    Home
+                </a>
 
-                <small>
-                    MMMUT • Gorakhpur
-                </small>
+            </nav>
 
+        </div>
+
+    </header>
+
+
+    <main class="home-main">
+
+        <!-- HERO -->
+
+        <section class="home-hero">
+
+            <div class="home-badge">
+                CAMPUS LOCATION DIRECTORY
             </div>
 
-        </div>
+            <h1>
+                Find Your Location
+            </h1>
 
-        <nav class="home-nav">
-
-            <a href="index.html" class="nav-link active">
-                Home
-            </a>
-
-        </nav>
-
-    </div>
-
-</header>
+            <p>
+                Quickly find rooms, halls and facilities
+                across the MMMUT campus.
+            </p>
 
 
-<main class="home-main">
-
-    <!-- HERO -->
-
-    <section class="home-hero">
-
-        <div class="home-badge">
-            CAMPUS LOCATION DIRECTORY
-        </div>
-
-        <h1>
-            Find Your Location
-        </h1>
-
-        <p>
-            Quickly find rooms, halls and facilities
-            across the MMMUT campus.
-        </p>
-
-
-        <div class="home-search">
-
-            <span>
-                ⌕
-            </span>
-
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="Search a location..."
-                autocomplete="off"
-            >
-
-        </div>
-
-    </section>
-
-
-    <!-- LOCATION SECTION -->
-
-    <section class="home-locations">
-
-        <div class="home-section-header">
-
-            <div>
+            <div class="home-search">
 
                 <span>
-                    LOCATIONS
+                    ⌕
                 </span>
 
-                <h2>
-                    Campus Locations
-                </h2>
+                <input type="search" id="searchInput" placeholder="Search a location..." autocomplete="off">
 
             </div>
 
-            <div
-                id="locationCount"
-                class="location-count">
-                —
+        </section>
+
+
+        <!-- LOCATION SECTION -->
+
+        <section class="home-locations">
+
+            <div class="home-section-header">
+
+                <div>
+
+                    <span>
+                        LOCATIONS
+                    </span>
+
+                    <h2>
+                        Campus Locations
+                    </h2>
+
+                </div>
+
+                <div id="locationCount" class="location-count">
+                    —
+                </div>
+
             </div>
 
-        </div>
 
-
-        <div
-            id="filterChips"
-            class="filter-chips">
-        </div>
-
-
-        <div
-            id="skeletonGrid"
-            class="home-grid">
-
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-
-        </div>
-
-
-        <div
-            id="locations"
-            class="home-grid"
-            style="display:none;">
-        </div>
-
-
-        <div
-            id="noResults"
-            class="home-no-results"
-            style="display:none;">
-
-            <div>
-                ⌕
+            <div id="filterChips" class="filter-chips">
             </div>
 
-            <h3>
-                No locations found
-            </h3>
 
-            <p>
-                Try a different search.
-            </p>
+            <div id="skeletonGrid" class="home-grid">
 
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+
+            </div>
+
+
+            <div id="locations" class="home-grid" style="display:none;">
+            </div>
+
+
+            <div id="noResults" class="home-no-results" style="display:none;">
+
+                <div>
+                    ⌕
+                </div>
+
+                <h3>
+                    No locations found
+                </h3>
+
+                <p>
+                    Try a different search.
+                </p>
+
+            </div>
+
+
+            <div id="homeError" class="home-error" style="display:none;">
+
+                <strong>
+                    Unable to load locations
+                </strong>
+
+                <p>
+                    Please refresh the page and try again.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+
+        <div class="footer-copy">
+            © 2026 Smart Location QR. All rights reserved.
         </div>
 
-
-        <div
-            id="homeError"
-            class="home-error"
-            style="display:none;">
-
-            <strong>
-                Unable to load locations
-            </strong>
-
-            <p>
-                Please refresh the page and try again.
-            </p>
-
+        <div class="footer-author">
+            Developed by <strong> Rohan Kushwaha | Ayush Mishra | Avanish Kumar</strong>
         </div>
 
-    </section>
+        <div class="footer-campus">
+            ITCA • MMMUT • Gorakhpur
+        </div>
 
-</main>
-
-
-<footer class="site-footer">
-
-    <div class="footer-copy">
-        © 2026 Smart Location QR.
-    </div>
-
-    <div class="footer-author">
-        Developed by <strong>Avanish Kumar | Rohan Kushwaha | Ayush Mishra</strong>
-    </div>
-
-    <div class="footer-campus">
-        ITCA • MMMUT • Gorakhpur
-    </div>
-
-</footer>
+    </footer>
 
 
-<script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 
 </body>
 
