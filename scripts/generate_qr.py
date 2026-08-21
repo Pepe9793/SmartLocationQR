@@ -43,7 +43,7 @@ def create_labeled_qr(data, text, filename, subtitle="Scan for location details"
     # Calculate sizes
     qr_w, qr_h = qr_img.size
     header_h = 70  # Space for conference title at top
-    footer_h = 100  # Space for location name, instructions, and watermark at bottom
+    footer_h = 80  # Space for location name and instructions at bottom
     
     # Create new image with extra space at top and bottom
     new_img = Image.new('RGB', (qr_w, qr_h + header_h + footer_h), bg_color)
@@ -56,18 +56,15 @@ def create_labeled_qr(data, text, filename, subtitle="Scan for location details"
         font_main_title = ImageFont.truetype("segoeuib.ttf", 36) # Conference Title (Header)
         font_loc_name = ImageFont.truetype("segoeuib.ttf", 26)   # Location Name (Footer)
         font_sub = ImageFont.truetype("segoeui.ttf", 16)         # Instructions (Footer)
-        font_watermark = ImageFont.truetype("segoeui.ttf", 10)   # Watermark
     except IOError:
         try:
             font_main_title = ImageFont.truetype("arialbd.ttf", 36)
             font_loc_name = ImageFont.truetype("arialbd.ttf", 26)
             font_sub = ImageFont.truetype("arial.ttf", 16)
-            font_watermark = ImageFont.truetype("arial.ttf", 10)
         except IOError:
             font_main_title = ImageFont.load_default()
             font_loc_name = ImageFont.load_default()
             font_sub = ImageFont.load_default()
-            font_watermark = ImageFont.load_default()
             
     # Draw Header (Logo + Conference Title)
     conf_title = "iSmartComp2026"
@@ -107,13 +104,6 @@ def create_labeled_qr(data, text, filename, subtitle="Scan for location details"
     text_x_inst = (qr_w - (bbox_inst[2] - bbox_inst[0])) // 2
     text_y_inst = text_y_loc + 35
     draw.text((text_x_inst, text_y_inst), instruction_text, fill=text_color, font=font_sub)
-    
-    # Draw Watermark
-    watermark = "Developed by Rohan Kushwaha"
-    bbox_wm = draw.textbbox((0, 0), watermark, font=font_watermark)
-    text_x_wm = (qr_w - (bbox_wm[2] - bbox_wm[0])) // 2
-    text_y_wm = text_y_inst + 25
-    draw.text((text_x_wm, text_y_wm), watermark, fill="#64748b", font=font_watermark) # muted text color
     
     filepath = os.path.join(OUTPUT_FOLDER, filename)
     new_img.save(filepath)
