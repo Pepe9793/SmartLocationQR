@@ -54,5 +54,22 @@ for location in locations:
     print()
 
 print("================================")
-print(f"All {len(locations)} QR codes generated!")
+print(f"All {len(locations)} location QR codes generated!")
 print("================================")
+
+# Generate Homepage QR code
+home_url = "https://kr9793.github.io/SmartLocationQR/"
+qr_home = qrcode.QRCode(
+    version=1,
+    error_correction=qrcode.constants.ERROR_CORRECT_H,
+    box_size=12,
+    border=4
+)
+qr_home.add_data(home_url)
+qr_home.make(fit=True)
+image_home = qr_home.make_image()
+home_filepath = os.path.join(OUTPUT_FOLDER, "QR_Homepage.png")
+image_home.save(home_filepath)
+
+print(f"\nCreated: QR_Homepage.png")
+print(f"URL:     {home_url}")
