@@ -34,6 +34,7 @@ html {
     margin: 0;
     padding: 0;
     background: var(--bg);
+    scroll-behavior: smooth;
 }
 
 body {
@@ -78,8 +79,8 @@ a {
     height: 64px;
 
     background: rgba(5, 7, 13, 0.75);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
     border-bottom: 1px solid var(--border);
 
@@ -183,11 +184,15 @@ a {
     font-size: 14px;
     font-weight: 500;
 
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .back:hover {
     color: var(--cyan);
+}
+
+.back:active {
+    transform: scale(0.95);
 }
 
 .back span {
@@ -351,7 +356,7 @@ a {
     gap: 10px;
 
     background: var(--surface);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(16px);
 
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
@@ -473,7 +478,7 @@ a {
     padding: 8px 15px;
 
     background: var(--surface);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(16px);
 
     border: 1px solid var(--border);
 
@@ -495,6 +500,10 @@ a {
     border-color: var(--border-hover);
 
     color: var(--text-primary);
+}
+
+.chip:active {
+    transform: scale(0.95);
 }
 
 .chip.active {
@@ -553,8 +562,8 @@ a {
     min-width: 0;
 
     background: var(--surface);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 
     border: 1px solid var(--border);
 
@@ -574,6 +583,10 @@ a {
     border-color: var(--border-hover);
 
     box-shadow: var(--glow-blue);
+}
+
+.home-card:active {
+    transform: scale(0.98);
 }
 
 .home-card-link {
@@ -749,7 +762,7 @@ a {
     text-align: center;
 
     background: var(--surface);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(16px);
 
     border: 1px solid var(--border);
 
